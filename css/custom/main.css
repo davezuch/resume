@@ -228,13 +228,6 @@ div.div.end {
 /* =============================================================================
    Site Styles
    ========================================================================== */
-@media only screen and (max-width: 30em) {
-  html, body {
-    max-width: 100%;
-    overflow: hidden;
-  }
-}
-
 body {
   color: #333333;
   background-color: #000;
@@ -336,9 +329,20 @@ h1::selection, h2::selection {
 
 #wrapper {
   margin: 0 auto;
-  padding: 0 0 5em;
-  max-width: 33em;
+  padding: 0 0 2em;
   position: relative;
+  max-width: 18.5em;
+}
+@media only screen and (min-width: 513px) {
+  #wrapper {
+    padding: 0 0 5em;
+    max-width: 25em;
+  }
+}
+@media only screen and (min-width: 751px) {
+  #wrapper {
+    max-width: 33em;
+  }
 }
 
 @media only screen and (min-width: 513px) {
@@ -351,12 +355,20 @@ h1::selection, h2::selection {
     padding-top: 344px;
   }
 }
+header div.belt {
+  max-width: 18.5em;
+}
 @media only screen and (min-width: 513px) {
   header div.belt {
     position: fixed;
     top: 0;
     z-index: 0;
     width: 100%;
+    max-width: 25em;
+  }
+}
+@media only screen and (min-width: 751px) {
+  header div.belt {
     max-width: 33em;
   }
 }
@@ -364,11 +376,17 @@ header hgroup {
   background: #fff;
   padding: 1em 0;
   margin: 0 auto;
-  max-width: 33em;
+  max-width: 18.5em;
 }
 @media only screen and (min-width: 513px) {
   header hgroup {
     padding: 1.5em 0;
+    max-width: 25em;
+  }
+}
+@media only screen and (min-width: 751px) {
+  header hgroup {
+    max-width: 33em;
   }
 }
 header h2 {
@@ -446,7 +464,17 @@ header address {
   position: fixed;
   top: 0;
   width: 100%;
-  max-width: 33em;
+  max-width: 18.5em;
+}
+@media only screen and (min-width: 513px) {
+  .sticky header address {
+    max-width: 25em;
+  }
+}
+@media only screen and (min-width: 751px) {
+  .sticky header address {
+    max-width: 33em;
+  }
 }
 header address ul {
   padding: 15px 0;
@@ -615,11 +643,11 @@ header address a:hover {
   list-style: none;
   position: relative;
   margin: 0 auto;
-  max-width: 286px;
+  max-width: 15.5em;
 }
 @media only screen and (min-width: 513px) {
   #main p, #main ul {
-    max-width: 16.6em;
+    max-width: 20em;
   }
 }
 @media only screen and (min-width: 751px) {
@@ -867,14 +895,25 @@ div.div {
 }
 */
 footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  max-width: 33em;
-  z-index: 0;
-  line-height: 1em;
-  padding: 2.5em 0;
-  color: #666;
+  color: #fff;
+  max-width: 18.5em;
+}
+@media only screen and (min-width: 513px) {
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 25em;
+    z-index: 0;
+    line-height: 1em;
+    padding: 2.5em 0;
+    color: #666;
+  }
+}
+@media only screen and (min-width: 751px) {
+  footer {
+    max-width: 33em;
+  }
 }
 
 nav ul {

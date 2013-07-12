@@ -20,10 +20,10 @@
    Site Styles
    ========================================================================== */
 html, body {
-	@include respond2($max: $cutoff-width) {
-		max-width: 100%;
-		overflow: hidden;
-	}
+	//@include respond2($max: $cutoff-width) {
+	//	max-width: 100%;
+	//	overflow: hidden;
+	//}
 }
 
 body {
@@ -62,9 +62,16 @@ h1, h2 {
 
 #wrapper {
 	margin: 0 auto;
-	padding: 0 0 5em;
-	max-width: $max-width;
+	padding: 0 0 2em;
 	position: relative;
+	max-width: $max-width;
+	@include respond(x2) {
+		padding: 0 0 5em;
+		max-width: $max-width-x2;
+	}
+	@include respond(x3) {
+		max-width: $max-width-x3;
+	}
 }
 
 header {
@@ -76,6 +83,8 @@ header {
 	}
 
 	div.belt {
+		max-width: $max-width;
+
 		@include respond(x2) {
 			position: fixed;
 			top: 0;
@@ -83,7 +92,10 @@ header {
 			//left: 0;
 			z-index: 0;
 			width: 100%;
-			max-width: $max-width;
+			max-width: $max-width-x2;
+		}
+		@include respond(x3) {
+			max-width: $max-width-x3;
 		}
 	}
 
@@ -95,6 +107,10 @@ header {
 
 		@include respond(x2) {
 			padding: 1.5em 0;
+			max-width: $max-width-x2;
+		}
+		@include respond(x3) {
+			max-width: $max-width-x3;
 		}
 	}
 
@@ -118,6 +134,13 @@ header {
 			top: 0;
 			width: 100%;
 			max-width: $max-width;
+
+			@include respond(x2) {
+				max-width: $max-width-x2;
+			}
+			@include respond(x3) {
+				max-width: $max-width-x3;
+			}
 		}
 
 		ul {
@@ -224,13 +247,13 @@ header {
 		list-style: none;
 		position: relative;
 		margin: 0 auto;
-		max-width: 286px;
+		max-width: $copy-width;
 
 		@include respond(x2) {
-			max-width: 16.6em;
+			max-width: $copy-width-x2;
 		}
 		@include respond(x3) {
-			max-width: $copy-width;
+			max-width: $copy-width-x3;
 		}
 	}
 	p:first-child {
@@ -394,14 +417,22 @@ div.div {
 }
 */
 footer {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
+	color: #fff;
 	max-width: $max-width;
-	z-index: 0;
-	line-height: 1em;
-	padding: 2.5em 0;
-	color: #666;
+
+	@include respond(x2) {
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		max-width: $max-width-x2;
+		z-index: 0;
+		line-height: 1em;
+		padding: 2.5em 0;
+		color: #666;
+	}
+	@include respond(x3) {
+		max-width: $max-width-x3;
+	}
 }
 nav {
 	ul {
