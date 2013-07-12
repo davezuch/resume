@@ -1,0 +1,415 @@
+// Modules and Variables
+@import "partials/base";
+
+// Partials
+@import "partials/typography";
+
+@include selection { background: #222; color: #fff; }
+
+/* =============================================================================
+   Box Sizing
+   Apply a natural box layout model to all elements - http://paulirish.com/2012/box-sizing-border-box-ftw/
+   border-box polyfill for IE 6/7: https://github.com/Schepp/box-sizing-polyfill#readme
+   ========================================================================== */
+/** {
+	@include box-sizing(border-box);
+	*behavior: url(boxsizing.htc);
+}*/
+
+/* =============================================================================
+   Site Styles
+   ========================================================================== */
+html, body {
+	@include respond2($max: $cutoff-width) {
+		max-width: 100%;
+		overflow: hidden;
+	}
+}
+
+body {
+	color: $base-color;
+	@include bg();
+}
+
+a { 
+	color: $link-color; 
+	border-bottom: 1px dotted transparent;
+	@include transition(all 0.1s ease-out);
+
+	&:visited { color: $visited-color; }
+	&:hover { color: $hover-color; }
+	/* &:focus { outline: thin dotted; } */
+	&:focus { outline: none; }
+	&:hover, &:active { 
+		outline: 0;
+		border-color: inherit;
+	}
+}
+
+img { max-width: 100%; }
+h1, h2, h3 { 
+	margin: 0;
+}
+h1, h2 {
+	@include bgClipText;
+}
+.title {
+	margin-bottom: .25em;
+}
+.period {
+	margin: 0 0 0;
+}
+
+#wrapper {
+	margin: 0 auto;
+	padding: 0 0 5em;
+	max-width: $max-width;
+	position: relative;
+}
+
+header {
+	@include respond(x2) {
+		padding-top: 227px;
+	}
+	@include respond(x3) {
+		padding-top: 344px;
+	}
+
+	div.belt {
+		@include respond(x2) {
+			position: fixed;
+			top: 0;
+			//right: 0;
+			//left: 0;
+			z-index: 0;
+			width: 100%;
+			max-width: $max-width;
+		}
+	}
+
+	hgroup {
+		background: #fff;
+		padding: 1em 0;
+		margin: 0 auto;
+		max-width: $max-width;
+
+		@include respond(x2) {
+			padding: 1.5em 0;
+		}
+	}
+
+	h2 {
+		padding: .25em 0;
+		-webkit-text-fill-color: rgba(0,0,0,.25);
+
+		@include respond(x2) {
+			padding-top: 0;
+		}
+	}
+
+	address {
+		position: relative;
+		color: #fff;
+		@include bg();
+		z-index:99;
+
+		.sticky & {
+			position: fixed;
+			top: 0;
+			width: 100%;
+			max-width: $max-width;
+		}
+
+		ul {
+			padding: 15px 0;
+			margin: 0;
+			//background-color: transparent;
+			//background-color: rgba(255,255,255,.25);
+		}
+
+		li {
+			display: inline-block;
+			padding: 0 5px;
+		}
+
+		/*@include respond(x1) {
+			//li:first-child {
+			//	display: block;
+			//}
+
+			li:last-child::before {
+				content: '•';
+				padding-right:15px;
+			}
+		}
+
+		@include respond(x2) {
+			li:not(:first-child)::before {
+				content: '•';
+				padding-right:20px;
+			}
+		}*/
+
+		a {
+			@include alt-link;
+		}
+
+		/*&::before {
+			@include border(top, 0);
+			top: -1px;
+			border-top: 1px solid rgba(0,0,0,.25);
+			opacity: .75;
+		}
+
+		&::after {
+			@include border(bottom, 0);
+			bottom: -1px;
+			border-bottom: 1px solid rgba(0,0,0,.25);
+			opacity: .75;
+		}*/
+
+		/*&::after {
+			@include border(bottom, 0);
+			bottom: -2px;
+			border-bottom: 1px solid rgba(0,0,0,.25);
+			opacity: .25;
+		}*/
+	}
+}
+
+#main {
+	@include bg();
+	position: relative;
+	z-index: 1;
+	//background: rgba(255,255,255,.75);
+
+	> section {
+		//max-width: 900px;
+		background: #fff;
+		//width:100%;
+		margin: 0 0 3em;
+		position: relative;
+	}
+
+	h2, h3 {
+		padding: .5em 0;
+		position: relative;
+		z-index: 1;
+
+		&::before {
+			@include border(bottom, 100%);
+			opacity: .33;
+			z-index: -1;
+		}
+
+		&::after {
+			@include border(bottom, 1px);
+			z-index: 2;
+		}
+	}
+
+	h3 {
+		color: #fff;
+		-webkit-text-fill-color: #fff;
+		@include text-shadow(0 0 1px #000);
+
+		&::before {
+			opacity: .66;
+		}
+	}
+
+	p, ul {
+		margin: 0;
+		padding: 0 0 1em;
+		list-style: none;
+		position: relative;
+		margin: 0 auto;
+		max-width: 286px;
+
+		@include respond(x2) {
+			max-width: 16.6em;
+		}
+		@include respond(x3) {
+			max-width: $copy-width;
+		}
+	}
+	p:first-child {
+		padding: 1em 0;
+	}
+
+	/*
+	p::after, ul::after, li::after {
+		content: "";
+		display: inline-block;
+		width:100%;
+		//line-height:$base-line-height;
+	}
+	*/
+
+	li {
+		padding: 1em 0;
+		position: relative;
+
+		ul {
+			margin: 1em 0 1em;
+			padding: 1px 0 0;
+
+			&::before {
+				@include border(top, 1px);
+			}
+
+			/*&::after {
+				//@include border(bottom, 0);
+				//height:0;
+				//border: .95em solid transparent;
+				//border-left: .5em solid #fff;
+				//border-right: .5em solid #fff;
+				//bottom: -1.8em;
+				//@include box-sizing(border-box);
+				@include border(bottom, 2em);
+				bottom:-2em;
+				opacity: .5;
+			}*/
+		}
+
+		li {
+			padding: .25em;
+			margin: 2px auto 0;
+			//display: table;
+
+			&::after {
+				@include border(bottom, 1px);
+			}
+		}
+
+		&::after {
+			@include border(bottom, 5px);
+		}
+
+		&:last-child::after {
+			//display: none;
+		}
+	}
+
+
+	.skills {
+		padding: 0;
+
+		&.small {
+			display: run-in;
+		}
+
+		li {
+			display: inline;
+			padding: 0 10px;
+
+			&::after {
+				display: none;
+			}
+		}
+	}
+
+	.ornate {
+		position: relative;
+		padding: 0;
+		//margin: 1.5em auto 1em;
+
+		p:first-child::before,
+		> li:first-child::before {
+			@include border(top, 5px);
+			margin-top: -5px;
+		}
+
+		p:last-child::after {
+			@include border(bottom, 5px);
+			margin-bottom: -5px;
+		}
+	}
+
+	/*.ornate::before {
+		@include border(top, 0);
+		@include bg();
+		width: 0;
+		height: 0;
+		border:30px solid #fff;
+		border-bottom-color: transparent;
+		border-top: 0;
+		top: -5px;
+		left:50%;
+		margin-left:-30px;
+	}*/
+
+/*	.ornate::after {
+		@include border(bottom, 0);
+		@include bg();
+		width: 0;
+		height: 0;
+		border:30px solid #fff;
+		border-top-color: transparent;
+		border-bottom: 0;
+		bottom: 2em;
+		margin-bottom: -11px;
+		left:50%;
+		margin-left:-30px;
+	}
+
+	ul.ornate::after {
+		margin-bottom: -6px;
+	}*/
+
+	.island {
+		padding: 1.5em 0;
+		@include respond(x2) {
+			padding: 2em 0;
+		}
+		@include respond(x3) {
+			padding: 3em 0;
+		}
+	}
+
+	.job .island {
+		padding-top: 1.5em;
+	}
+}
+/*
+div.div {
+	@include bgClipText;
+	margin: 0 0 -.1em;
+
+	&::after {
+		content: 'r';
+		//content: 'b';
+	}
+
+	&.end {
+		margin: -.6em 0 .4em;
+		@include respond(x2) {
+			margin: -.7em 0 .4em;
+		}
+
+		&::after {
+			content: 'b';
+		}
+	}
+}
+*/
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	max-width: $max-width;
+	z-index: 0;
+	line-height: 1em;
+	padding: 2.5em 0;
+	color: #666;
+}
+nav {
+	ul {
+	  margin: 0;
+	  padding: 0;
+	}
+
+	a {
+		display: block;
+	}
+}

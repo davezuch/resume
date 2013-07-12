@@ -1,0 +1,19 @@
+// Use Compass ('cause it rocks!)
+@import "compass";
+
+// Links
+$link-color: #43B8F2;
+$visited-color: #53A8F2;
+$hover-color: #196895;
+
+// Links
+$alt-link-color: #FFF;
+$alt-visited-color: #FFF;
+$alt-hover-color: rgba(255, 255, 255, .9);
+
+// Dimensions
+$copy-width: 28em;
+$cutoff-width: $copy-width + 2em;
+$max-width: $cutoff-width + 3em;
+
+@import "modules/all"

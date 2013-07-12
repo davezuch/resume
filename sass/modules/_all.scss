@@ -1,0 +1,23 @@
+@import "modules/bg";
+@import "modules/media";
+
+$prefixes: ("-moz-", "");
+@mixin selection($sel: "") {
+	@each $prefix in $prefixes {
+		#{$sel}::#{$prefix}selection {
+			@content;
+		}
+	}
+}
+
+@mixin alt-link {
+	color: $alt-link-color;
+
+	&:visited {
+		color: $alt-visited-color;
+	}
+
+	&:hover {
+		color: $alt-hover-color;
+	}
+}
