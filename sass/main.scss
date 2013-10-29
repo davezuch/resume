@@ -33,8 +33,8 @@ body {
 
 a { 
 	color: $link-color; 
-	border-bottom: 1px dotted transparent;
-	@include transition(all 0.1s ease-out);
+	//border-bottom: 1px dotted transparent;
+	@include transition(all 0.1s ease);
 
 	&:visited { color: $visited-color; }
 	&:hover { color: $hover-color; }
@@ -123,7 +123,7 @@ header {
 		}
 	}
 
-	address {
+	nav {
 		position: relative;
 		color: #fff;
 		@include bg();
@@ -144,15 +144,17 @@ header {
 		}
 
 		ul {
-			padding: 15px 0;
+			display: table;
+			width: 100%;
+			//padding: 15px 0;
 			margin: 0;
 			//background-color: transparent;
 			//background-color: rgba(255,255,255,.25);
 		}
 
 		li {
-			display: inline-block;
-			padding: 0 5px;
+			display: table-cell;
+			//padding: 0 5px;
 		}
 
 		/*@include respond(x1) {
@@ -175,6 +177,11 @@ header {
 
 		a {
 			@include alt-link;
+			padding: 1em;
+
+			&:hover {
+				background: rgba(255,255,255,.15);
+			}
 		}
 
 		/*&::before {
@@ -241,12 +248,11 @@ header {
 		}
 	}
 
-	p, ul {
-		margin: 0;
+	p, ul, form {
+		margin: 0 auto;
 		padding: 0 0 1em;
 		list-style: none;
 		position: relative;
-		margin: 0 auto;
 		max-width: $copy-width;
 
 		@include respond(x2) {
@@ -258,6 +264,9 @@ header {
 	}
 	p:first-child {
 		padding: 1em 0;
+	}
+	form {
+		padding-bottom: 0;
 	}
 
 	/*
@@ -313,86 +322,167 @@ header {
 			//display: none;
 		}
 	}
+}
 
+.skills {
+	padding: 0;
 
-	.skills {
-		padding: 0;
-
-		&.small {
-			display: run-in;
-		}
-
-		li {
-			display: inline;
-			padding: 0 10px;
-
-			&::after {
-				display: none;
-			}
-		}
+	&.small {
+		display: run-in;
 	}
 
-	.ornate {
-		position: relative;
-		padding: 0;
-		//margin: 1.5em auto 1em;
+	li {
+		display: inline;
+		padding: 0 10px;
 
-		p:first-child::before,
-		> li:first-child::before {
-			@include border(top, 5px);
-			margin-top: -5px;
-		}
-
-		p:last-child::after {
-			@include border(bottom, 5px);
-			margin-bottom: -5px;
+		&::after {
+			display: none;
 		}
 	}
+}
 
-	/*.ornate::before {
-		@include border(top, 0);
-		@include bg();
-		width: 0;
-		height: 0;
-		border:30px solid #fff;
-		border-bottom-color: transparent;
-		border-top: 0;
-		top: -5px;
-		left:50%;
-		margin-left:-30px;
-	}*/
+.ornate {
+	position: relative;
+	padding: 0;
+	//margin: 1.5em auto 1em;
+
+	p:first-child::before,
+	> li:first-child::before {
+		@include border(top, 5px);
+		margin-top: -5px;
+	}
+
+	p:last-child::after {
+		@include border(bottom, 5px);
+		margin-bottom: -5px;
+	}
+}
+
+/*.ornate::before {
+	@include border(top, 0);
+	@include bg();
+	width: 0;
+	height: 0;
+	border:30px solid #fff;
+	border-bottom-color: transparent;
+	border-top: 0;
+	top: -5px;
+	left:50%;
+	margin-left:-30px;
+}*/
 
 /*	.ornate::after {
-		@include border(bottom, 0);
-		@include bg();
-		width: 0;
-		height: 0;
-		border:30px solid #fff;
-		border-top-color: transparent;
-		border-bottom: 0;
-		bottom: 2em;
-		margin-bottom: -11px;
-		left:50%;
-		margin-left:-30px;
-	}
+	@include border(bottom, 0);
+	@include bg();
+	width: 0;
+	height: 0;
+	border:30px solid #fff;
+	border-top-color: transparent;
+	border-bottom: 0;
+	bottom: 2em;
+	margin-bottom: -11px;
+	left:50%;
+	margin-left:-30px;
+}
 
-	ul.ornate::after {
-		margin-bottom: -6px;
-	}*/
+ul.ornate::after {
+	margin-bottom: -6px;
+}*/
+.row {
+	display: block;
+	overflow: hidden;
+	padding: 1em 0;
 
-	.island {
-		padding: 1.5em 0;
-		@include respond(x2) {
-			padding: 2em 0;
+	label {
+		display: block;
+		position: relative;
+		padding: .5em 0;
+		background: #fff;
+
+		&::before {
+			@include border(top, 1px);
 		}
-		@include respond(x3) {
-			padding: 3em 0;
+	}
+
+	.textbelt {
+		overflow: visible;
+		height: 1.2em;
+		margin-bottom: .2em;
+		@include transition(all 0.1s ease-out);
+
+		textarea {
+			height: 200%;
 		}
 	}
 
-	.job .island {
-		padding-top: 1.5em;
+	input, textarea {
+		border: 0;
+		padding: 0;
+		width: 100%;
+		height: 1.2em;
+		display: block;
+		overflow: hidden;
+		resize: none;
+
+		&.offscreen {
+			@include transition(none);
+		}
+
+		&:focus {
+			outline: 0;
+		}
 	}
+
+}
+.row-half {
+	float: left;
+	width: 50%;
+	padding: 0 0 0 1em;
+
+	&:first-child {
+		padding: 0 1em 0 0;
+	}
+}
+.btn-belt {
+	width: $max-width;
+	margin: 0 -1.5em;
+
+	@include respond(x2) {
+		width: $copy-width-x2;
+		margin: 0 -2.5em;
+	}
+	@include respond(x3) {
+		width: $max-width-x3;
+	}
+
+	button {
+		@extend h3;
+		display: block;
+		border: 0;
+		width: 100%;
+
+		&::before {
+			@include transition(all 0.1s ease);
+		}
+
+		#main &:hover::before {
+			opacity: .77;
+		}
+	}
+}
+
+.island {
+	padding: 1.5em 0;
+	@include respond(x2) {
+		padding: 2em 0;
+	}
+	@include respond(x3) {
+		padding: 2.75em 0;
+	}
+}
+
+.job .island {
+	padding-top: 1.5em;
 }
 /*
 div.div {
@@ -443,4 +533,10 @@ nav {
 	a {
 		display: block;
 	}
+}
+
+.offscreen {
+	position: absolute;
+	top: -999%;
+	left: -999%;
 }

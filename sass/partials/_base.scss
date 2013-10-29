@@ -14,12 +14,12 @@ $alt-hover-color: rgba(255, 255, 255, .9);
 // Dimensions
 $copy-width: 15.5em;
 $cutoff-width: $copy-width + 1em;
-$max-width: $cutoff-width + 2em;
+$max-width: $copy-width + 3em;
 $copy-width-x2: 20em;
 $cutoff-width-x2: $copy-width-x2 + 2em;
-$max-width-x2: $cutoff-width-x2 + 3em;
+$max-width-x2: $copy-width-x2 + 5em;
 $copy-width-x3: 28em;
 $cutoff-width-x3: $copy-width-x3 + 2em;
-$max-width-x3: $cutoff-width-x3 + 3em;
+$max-width-x3: $copy-width-x3 + 5em;
 
 @import "modules/all"

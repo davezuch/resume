@@ -7,7 +7,7 @@
 
 // }(jQuery));
 
-/* global DZ, MBP */
+/* global DZ, MBP, console */
 
 window.DZ = (function DZ(){
 
@@ -104,10 +104,14 @@ window.DZ = (function DZ(){
 		},
 
 		addEvent: function(el, evs, fn) {
+			var self = this;
+			el = this.match(el);
 			evs = evs.split(' ');
-			for(var i=0, l=evs.length; i<l; i++) {
-				this._addEvent(el, evs[i], fn);
-			}
+			el.each(function(){
+				for(var i=0, l=evs.length; i<l; i++) {
+					self._addEvent(this, evs[i], fn);
+				}
+			});
 		},
 
 		_addEvent: function(el, ev, fn) {
@@ -124,6 +128,7 @@ window.DZ = (function DZ(){
 		},
 
 		newStyle: function(css) {
+			if(!css || typeof css !== 'string') { return false; }
 			var head = document.getElementsByTagName('head')[0],
 				style = document.createElement('style');
 
@@ -137,10 +142,16 @@ window.DZ = (function DZ(){
 		},
 
 		updateStyle: function(style, css) {
-			if(!style || style.tagName.toLowerCase() !== 'style') { return false; }
+			if(!style || style.tagName.toLowerCase() !== 'style') { return this.newStyle(css); }
 			if(style.styleSheet) { style.styleSheet.cssText = css; }
 			else { style.appendChild(document.createTextNode(css)); }
 			return style;
+		},
+
+		replaceStyle: function(style, css) {
+			if(!style || style.tagName.toLowerCase() !== 'style') { return this.newStyle(css); }
+			style.parentNode.removeChild(style);
+			return this.newStyle(css);
 		}
 	};
 })();
@@ -155,17 +166,17 @@ window.DZ = (function DZ(){
 			var sY = window.scrollY;
 			sY >= origOffsetY ? DZ.addClass(document.body, 'sticky') : DZ.removeClass(document.body, 'sticky');
 
-			if(sY <= hHeight) { DZ.updateStyle(stickyCSS, 'header div.belt { top: ' + -(sY / 2.9) + 'px; }'); }
+			/*if(sY <= hHeight) { DZ.updateStyle(stickyCSS, 'header div.belt { top: ' + -(sY / 2) + 'px; }'); }*/
 		}
 
 		var header = DZ.matchOne('header div.belt'),
 			hHeight = header.scrollHeight,
 
-			contact = DZ.matchOne('header address'),
+			nav = DZ.matchOne('header nav'),
 			//header = DZ.matchOne('header'),
-			origOffsetY = contact.offsetTop,
-			cHeight = contact.scrollHeight,
-			stickyCSS = DZ.newStyle('body.sticky { padding-top: ' + cHeight + 'px; }');
+			origOffsetY = nav.offsetTop,
+			nHeight = nav.scrollHeight,
+			stickyCSS = DZ.newStyle('body.sticky { padding-top: ' + nHeight + 'px; }');
 
 		DZ.addEvent(document, 'scroll', onScroll);
 	}
@@ -177,6 +188,99 @@ window.DZ = (function DZ(){
 		DZ.addEvent(document, 'DOMContentLoaded', fixAdr);
 		DZ.addEvent(window, 'load', fixAdr);
 	}
+
+	function scrollPage(target, time) {
+		if(!target) {return;}
+		time = time || 400;
+		var el = document.documentElement,
+			offset = DZ.matchOne('header').offsetHeight,
+			from = el.scrollTop,
+			to = isNaN(target) ? target.offsetTop + offset : target,
+			start = new Date().getTime(),
+			timer = setInterval(function() {
+				var step = Math.min(1, (new Date().getTime()-start) / time);
+				el.scrollTop = (from + step * (to - from));
+				if(step === 1) {clearInterval(timer);}
+			}, 25);
+	}
+
+	function onBodyClick(e) {
+		var hash = e.target.hash;
+		if(!hash) {return;}
+
+		e.preventDefault();
+		scrollPage(DZ.matchOne(hash));
+
+		if(window.history.pushState) {
+			window.history.pushState({'hash': hash}, hash, hash);
+		}
+	}
+
+	function onPopState(e, data) {
+		var hash = window.location.hash;
+		e.preventDefault();
+
+		if(hash) {
+			scrollPage(DZ.matchOne(hash));
+		} else {
+			scrollPage(0);
+		}
+	}
+
+	DZ.addEvent(document.documentElement, 'click', onBodyClick);
+	DZ.addEvent(window, 'popstate', onPopState);
+
+	/*DZ.addEvent(DZ.match('textarea'), 'change keypress', function(){
+		DZ.removeClass(this, 'transit');
+		var oh = this.offsetHeight;
+		this.style.height = '';
+		var h = this.scrollHeight;
+		this.style.height = oh + 'px';
+		DZ.addClass(this, 'transit');
+		this.style.height = h + 'px';
+	});*/
+
+	DZ.match('.textbelt textarea').each(function(){
+		var textarea = this,
+			textbelt = this.parentNode,
+			oh = this.offsetHeight,
+			clone = (function(){
+				/*var props = ['height', 'width', 'lineHeight'],
+					propOb = {}, i = 0, l = props.length, prop;
+
+				for(; i<l; i++) {
+					prop = props[i];
+					propOb[prop] = window.getComputedStyle(textarea)[prop];
+				}*/
+
+				var clone = textarea.cloneNode();
+				clone.removeAttribute('name');
+				clone.removeAttribute('id');
+				DZ.addClass(clone, 'offscreen');
+				clone.setAttribute('tabIndex', '-1');
+				textbelt.parentNode.insertBefore(clone, textbelt);
+
+				return clone;
+			})(),
+			lastScrollHeight = null,
+			updateSize = function() {
+				textbelt.scrollTop = 0;
+				clone.style.height = '';
+				clone.value = textarea.value;
+				//clone.scrollHeight = 10000;
+
+				//var scrollHeight = Math.max(clone.scrollHeight, oh);
+				var scrollHeight = clone.scrollHeight - 3;
+
+				if(lastScrollHeight === scrollHeight) { return; }
+				lastScrollHeight = scrollHeight;
+
+				textbelt.style.height = scrollHeight + 'px';
+				clone.style.height = scrollHeight + 'px';
+			};
+
+		DZ.addEvent(textarea, 'keyup keydown change', updateSize);
+	});
 
 	DZ.match('h2, h3').each(function(){
 		this.innerHTML = this.innerHTML.replace(/(.)$/, '<span class="last-letter">$1</span>');
