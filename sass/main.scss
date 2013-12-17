@@ -433,6 +433,9 @@ ul.ornate::after {
 		}
 	}
 
+	.tip {
+		display: none;
+	}
 }
 .row-half {
 	float: left;
@@ -441,6 +444,18 @@ ul.ornate::after {
 
 	&:first-child {
 		padding: 0 1em 0 0;
+	}
+}
+.error {
+	.tip {
+		display: inline;
+	}
+
+	label {
+		color: $error-color;
+		&::before {
+			background: $error-color none;
+		}
 	}
 }
 .btn-belt {

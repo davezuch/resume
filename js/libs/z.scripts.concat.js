@@ -451,7 +451,7 @@ window.DZ = (function DZ(){
 
 	Array.prototype.each = function(fn){
 		for(var i=0, l=this.length; i<l; i++) {
-			if(fn.call(this[i], i) === false) { break; }
+			if(false === fn.call(this[i], i)) { break; }
 		}
 		return this;
 	};
@@ -468,8 +468,8 @@ window.DZ = (function DZ(){
 		},
 
 		matchOne: function(selector, parent) {
-			if(selector.each && selector[0] && typeof selector[0] === 'string') { selector = selector[0]; }
-			if(typeof selector === 'string') {
+			if(selector.each && selector[0] && 'string' === typeof selector[0]) { selector = selector[0]; }
+			if('string' === typeof selector) {
 				// Experimental: if ID, match ID (faster), else match query
 				if(/^#[^\s><+~*\[\]]+$/.test(selector)) { return this.getId(selector.substr(1)); }
 				else { return (parent || document).querySelector(selector); }
@@ -478,8 +478,8 @@ window.DZ = (function DZ(){
 		},
 
 		match: function(selector, parent) {
-			if(selector.each && selector[0] && typeof selector[0] === 'string') { selector = selector.join(', '); }
-			if(typeof selector === 'string') {  
+			if(selector.each && selector[0] && 'string' === typeof selector[0]) { selector = selector.join(', '); }
+			if('string' === typeof selector) {
 				// Experimental: if ID, match ID (faster), else match query
 				if(/^#[^\s><+~*\[\]]+$/.test(selector)) { return [this.getId(selector.substr(1))]; }
 				else { return aps.call((parent || document).querySelectorAll(selector), 0); }
@@ -587,8 +587,9 @@ window.DZ = (function DZ(){
 		},
 
 		replaceStyle: function(style, css) {
-			if(!style || style.tagName.toLowerCase() !== 'style') { return this.newStyle(css); }
-			style.parentNode.removeChild(style);
+			if(style && style.tagName.toLowerCase() === 'style') {
+				style.parentNode.removeChild(style);
+			}
 			return this.newStyle(css);
 		}
 	};
@@ -695,6 +696,7 @@ window.DZ = (function DZ(){
 				clone.removeAttribute('name');
 				clone.removeAttribute('id');
 				DZ.addClass(clone, 'offscreen');
+				//clone.className = 'offscreen';
 				clone.setAttribute('tabIndex', '-1');
 				textbelt.parentNode.insertBefore(clone, textbelt);
 
@@ -717,8 +719,84 @@ window.DZ = (function DZ(){
 				clone.style.height = scrollHeight + 'px';
 			};
 
-		DZ.addEvent(textarea, 'keyup keydown change', updateSize);
+		DZ.addEvent(textarea, 'keyup keydown change blur', updateSize);
 	});
+
+	function validate(form) {
+		var fields = DZ.match('.required', form),
+			errors = [];
+
+		fields.each(function(){
+			if(!this.value) {
+				return errors.push({
+					'field': this,
+					'msg': 'This field is required.'
+				});
+			}
+			if('email' === this.type && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value)) {
+				return errors.push({
+					'field': this,
+					'msg': 'Please enter a valid email address.'
+				});
+			}
+		});
+
+		return errors;
+	}
+
+	function liftError() {
+		if(!this.value) {return;}
+		if('email' === this.type && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value)) {return;}
+
+		var parent = this.parentNode;
+		if(DZ.hasClass(parent, 'textbelt')) {
+			parent = parent.parentNode;
+		}
+		DZ.removeClass(parent, 'error');
+	}
+
+	function sendEmail(form) {
+		var data = {
+				'name': form.name.value,
+				'email': form.email.value,
+				'subject': form.subject.value,
+				'message': form.message.value
+			},
+			req = new XMLHttpRequest();
+		req.open('POST', '/cgi-bin/send-email.py', true);
+		req.onreadystatechange = function(e) {
+			console.log('readyState:', req.readyState);
+			if(4 === req.readyState) {
+				console.log('status:', req.status);
+				if(200 === req.status) {
+
+				} else {
+
+				}
+			}
+		};
+		req.send(JSON.stringify(data));
+	}
+
+	function onSubmit(e) {
+		e.preventDefault();
+		var form = this,
+			errors = validate(form);
+
+		DZ.removeClass(DZ.match('.error', form), 'error');
+
+		if(errors.length) {
+			errors.each(function(){
+				DZ.addClass(this.field.parentNode, 'error');
+			});
+			errors[0].field.focus();
+		} else {
+			sendEmail(form);
+		}
+	}
+
+	DZ.addEvent('form', 'submit', onSubmit);
+	DZ.addEvent('.required', 'keyup change blur', liftError);
 
 	DZ.match('h2, h3').each(function(){
 		this.innerHTML = this.innerHTML.replace(/(.)$/, '<span class="last-letter">$1</span>');

@@ -102,7 +102,6 @@
           </li-->
         </ul>
       </div>
-      <div class="div end"></div>
     </section>
     <section id="skills">
       <h2>Technical Skills</h2>
@@ -123,7 +122,6 @@
           </li>
         </ul>
       </div>
-      <div class="div end"></div>
       <!--
       <h4>Profficient In</h4>
       AJAX, Chrome Dev Tools, Coda, Compass, CSS, DHTML, DOM Scripting, Firebug, Git, GitHub, Grunt, HTML, Illustrator, iTerm, JIRA, JavaScript, JQuery, JSON, Mac OSX, Mobile/Touch Web Apps, Node.JS, NPM, Photoshop, Responsive Web Design, SASS, Sublime Text, SVN, Terminal, TextMate, Typography, Web Fonts, Windows, XHTML
@@ -156,7 +154,6 @@
             </div>
           </div>
         </div>
-        <div class="div end"></div>
         <div class="job">
           <h3>Fox Interactive Media, Century City, CA</h3>
           <h4 class="title">Senior UI Developer</h4>
@@ -168,7 +165,6 @@
             </div>
           </div>
         </div>
-        <div class="div end"></div>
         <div class="job">
           <h3>Schematic, Los Angeles, CA</h3>
           <h4 class="title">Interface Enginer & Software Developer</h4>
@@ -179,7 +175,6 @@
             </div>
           </div>
         </div>
-        <div class="div end"></div>
         <div class="job">
           <h3>Cinemanow, Marina Del Rey, CA</h3>
           <h4 class="title">Freelance Front-End Developer</h4>
@@ -190,7 +185,6 @@
             </div>
           </div>
         </div>
-        <div class="div end"></div>
         <div class="job">
           <h3>Iventa, West Hollywood, CA</h3>
           <h4 class="title">Web/Graphic Design & Front-End Integrations Manager</h4>
@@ -202,7 +196,6 @@
             </div>
           </div>
         </div>
-        <div class="div end"></div>
         <div class="job">
           <h3>Brooks College, Long Beach, CA</h3>
           <h4 class="title">Interned as Student Project Manager</h4>
@@ -213,7 +206,6 @@
             </div>
           </div>
         </div>
-        <div class="div end"></div>
       </div>
     </section>
     <section id="education">
@@ -225,26 +217,25 @@
           <h5 class="period">July 2003 to December 2004</h5>
           <div class="island">
             <div class="desc ornate">
-              <p>Learned a multitude of techniques to and principles behind design and animation. Developer skills are mostly self-taught.</p>
+              <p>Learned a multitude of techniques to and principles behind design and animation. Was taught outdated web development practices, but learned modern, standards-based development on own.</p>
             </div>
           </div>
         </div>
-        <div class="div end"></div>
       </div>
     </section>
     <section id="contact">
       <div class="belt">
         <h2>Contact</h2>
-          <form action="#">
+          <form action="#" id="contact-form">
             <div class="island">
             <div class="row">
               <div class="row-half">
-                <input type="text" maxlength="255" name="name">
-                <label for="name">Your Name</label>
+                <input type="text" maxlength="255" name="name" class="required">
+                <label for="name"><span class="tip">Please enter </span>Your Name</label>
               </div>
               <div class="row-half">
-                <input type="email" maxlength="255" name="email">
-                <label for="email">Your E-mail</label>
+                <input type="email" maxlength="255" name="email" class="required">
+                <label for="email"><span class="tip">Please enter </span>Your E-mail</label>
               </div>
             </div>
             <div class="row">
@@ -253,16 +244,15 @@
             </div>
             <div class="row">
               <div class="textbelt">
-                <textarea name="message"></textarea>
+                <textarea name="message" class="required"></textarea>
               </div>
-              <label for="comment">Message</label>
+              <label for="comment"><span class="tip">Please enter a </span>Message</label>
             </div>
           </div>
           <div class="btn-belt">
             <button>Send</button>
           </div>
         </form>
-        <div class="div end"></div>
       </div>
     </section>
   </div> <!-- /#main -->

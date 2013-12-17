@@ -190,6 +190,10 @@ input, textarea {
   font-family: garamond-premier-pro-subhead, Garamond Premier Pro Subhead, Garamond Premier Pro, Times, serif;
 }
 
+.tooltip {
+  font-size: 85%;
+}
+
 div.div {
   font-family: Caligrafica;
   font-size: 104px;
@@ -295,7 +299,7 @@ h1, h2, h3, .btn-belt button {
 }
 
 h1, h2 {
-  /*background-color: #000;*/
+  background-color: #000;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: 50% 0;
@@ -945,6 +949,9 @@ ul.ornate::after {
 .row input:focus, .row textarea:focus {
   outline: 0;
 }
+.row .tip {
+  display: none;
+}
 
 .row-half {
   float: left;
@@ -953,6 +960,16 @@ ul.ornate::after {
 }
 .row-half:first-child {
   padding: 0 1em 0 0;
+}
+
+.error .tip {
+  display: inline;
+}
+.error label {
+  color: #dd8800;
+}
+.error label::before {
+  background: #dd8800 none;
 }
 
 .btn-belt {
