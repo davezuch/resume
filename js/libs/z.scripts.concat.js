@@ -755,6 +755,14 @@ window.DZ = (function DZ(){
 		DZ.removeClass(parent, 'error');
 	}
 
+	function serialize(data) {
+		var arr = [];
+		for (var prop in data) {
+			arr.push(prop + '=' + data[prop]);
+		}
+		return arr.join('&');
+	}
+
 	function sendEmail(form) {
 		var data = {
 				'name': form.name.value,
@@ -763,7 +771,8 @@ window.DZ = (function DZ(){
 				'message': form.message.value
 			},
 			req = new XMLHttpRequest();
-		req.open('POST', '/cgi-bin/send-email.py', true);
+		console.log(serialize(data));
+		req.open('Get', '/send?' + serialize(data), true);
 		req.onreadystatechange = function(e) {
 			console.log('readyState:', req.readyState);
 			if(4 === req.readyState) {
@@ -775,7 +784,7 @@ window.DZ = (function DZ(){
 				}
 			}
 		};
-		req.send(JSON.stringify(data));
+		req.send(null);
 	}
 
 	function onSubmit(e) {
