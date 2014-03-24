@@ -333,8 +333,7 @@ window.DZ = (function DZ(){
 				'message': form.message.value
 			},
 			req = new XMLHttpRequest();
-		console.log(serialize(data));
-		req.open('Get', '/send?' + serialize(data), true);
+		//console.log(serialize(data));
 		req.onreadystatechange = function(e) {
 			console.log('readyState:', req.readyState);
 			if(4 === req.readyState) {
@@ -346,7 +345,10 @@ window.DZ = (function DZ(){
 				}
 			}
 		};
-		req.send(null);
+		req.open('POST', '/send', true);
+		req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		req.setRequestHeader('Connection', 'close');
+		req.send('data=' + encodeURIComponent(JSON.stringify(data)));
 	}
 
 	function onSubmit(e) {
