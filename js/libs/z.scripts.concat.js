@@ -785,7 +785,7 @@ window.DZ = (function DZ(){
 		};
 		req.open('POST', '/send', true);
 		req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		req.setRequestHeader('Connection', 'close');
+		//req.setRequestHeader('Connection', 'close');
 		req.send('data=' + encodeURIComponent(JSON.stringify(data)));
 	}
 
