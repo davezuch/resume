@@ -7,162 +7,14 @@
 
 // }(jQuery));
 
-/* global DZ, MBP, console */
-
-window.DZ = (function DZ(){
-
-	Array.prototype.each = function(fn){
-		for(var i=0, l=this.length; i<l; i++) {
-			if(false === fn.call(this[i], i)) { break; }
-		}
-		return this;
-	};
-
-	var aps = Array.prototype.slice;
-
-	return {
-		getId: function(id, parent) {
-			return (parent || document).getElementById(id);
-		},
-
-		getTags: function(tag, parent) {
-			return aps.call((parent || document).getElementsByTagName(tag), 0);
-		},
-
-		matchOne: function(selector, parent) {
-			if(selector.each && selector[0] && 'string' === typeof selector[0]) { selector = selector[0]; }
-			if('string' === typeof selector) {
-				// Experimental: if ID, match ID (faster), else match query
-				if(/^#[^\s><+~*\[\]]+$/.test(selector)) { return this.getId(selector.substr(1)); }
-				else { return (parent || document).querySelector(selector); }
-			}
-			return selector.each ? selector[0] : selector;
-		},
-
-		match: function(selector, parent) {
-			if(selector.each && selector[0] && 'string' === typeof selector[0]) { selector = selector.join(', '); }
-			if('string' === typeof selector) {
-				// Experimental: if ID, match ID (faster), else match query
-				if(/^#[^\s><+~*\[\]]+$/.test(selector)) { return [this.getId(selector.substr(1))]; }
-				else { return aps.call((parent || document).querySelectorAll(selector), 0); }
-			}
-			else if(selector.tagName || selector === window || selector === document) { return [selector]; }
-			return selector;
-		},
-
-		// Class shortcuts
-		hasClass: function(el, classNames) { // only needs to match one class, can add in option to match all classes
-			el = this.matchOne(el);
-			classNames = classNames.split(' ');
-			for(var i=0, l=classNames.length, match=false; i<l; i++) {
-				if (el && (' '+el.className+' ').indexOf(' '+classNames[i]+' ') !== -1) {
-					match = true;
-					break;
-				}
-			}
-			return match;
-		},
-
-		removeClass: function(el, classNames) {
-			el = this.match(el);
-			classNames = classNames.split(' ');
-			el.each(function(){
-				if(this && 'className' in this) {
-					for(var i=0, l=classNames.length; i<l; i++) {
-						this.className = (' '+this.className+' ').replace(' '+classNames[i]+' ', ' ').trim();
-					}
-				}
-			});
-			return el;
-		},
-
-		addClass: function(el, classNames) {
-			var self  = this;
-			el = this.match(el);
-			classNames = classNames.split(' ');
-			el.each(function(){
-				for(var i=0, l=classNames.length; i<l; i++) {
-					if(this && !self.hasClass(this, classNames[i])) {
-						this.className = this.className.trim() + ' ' + classNames[i];
-					}
-				}
-			});
-			return el;
-		},
-
-		toggleClass: function(el, classNames) {
-			var self  = this;
-			el = this.match(el);
-			classNames = classNames.split(' ');
-			el.each(function(){
-				for(var i=0, l=classNames.length; i<l; i++) {
-					if(self.hasClass(this, classNames[i])) { self.removeClass(this, classNames[i]); }
-					else { self.addClass(this, classNames[i]); }
-				}
-			});
-			return el;
-		},
-
-		addEvent: function(el, evs, fn) {
-			var self = this;
-			el = this.match(el);
-			evs = evs.split(' ');
-			el.each(function(){
-				for(var i=0, l=evs.length; i<l; i++) {
-					self._addEvent(this, evs[i], fn);
-				}
-			});
-		},
-
-		_addEvent: function(el, ev, fn) {
-			if(el.addEventListener) {
-				el.addEventListener(ev, fn, false); //don't need the 'call' trick because in FF everything already works in the right way
-			}
-			else if(el.attachEvent) {//Internet Explorer
-				/*if(ev === 'DOMContentLoaded') {
-					el = window;
-					ev = 'load';
-				}*/
-				el.attachEvent("on" + ev, function() {fn.call(el);});
-			}
-		},
-
-		newStyle: function(css) {
-			if(!css || typeof css !== 'string') { return false; }
-			var head = document.getElementsByTagName('head')[0],
-				style = document.createElement('style');
-
-			style.type = 'text/css';
-			style.media = 'screen';
-			if(style.styleSheet) { style.styleSheet.cssText = css; }
-			else { style.appendChild(document.createTextNode(css)); }
-
-			head.appendChild(style);
-			return style;
-		},
-
-		updateStyle: function(style, css) {
-			if(!style || style.tagName.toLowerCase() !== 'style') { return this.newStyle(css); }
-			if(style.styleSheet) { style.styleSheet.cssText = css; }
-			else { style.appendChild(document.createTextNode(css)); }
-			return style;
-		},
-
-		replaceStyle: function(style, css) {
-			if(style && style.tagName.toLowerCase() === 'style') {
-				style.parentNode.removeChild(style);
-			}
-			return this.newStyle(css);
-		}
-	};
-})();
+/* global DZ, console */
 
 (function(){
-	MBP.scaleFix();
-	MBP.hideUrlBarOnLoad();
-	MBP.enableActive();
+	DZ.scaleFix();
+	DZ.hideUrlBarOnLoad();
+	DZ.enableActive();
 
-	function fixAdr() {
+	function fixNav() {
 		function onScroll(e) {
 			var sY = window.scrollY;
 			sY >= origOffsetY ? DZ.addClass(document.body, 'sticky') : DZ.removeClass(document.body, 'sticky');
@@ -186,8 +38,8 @@ window.DZ = (function DZ(){
 	if(touch) {
 		DZ.addClass(document.body, 'touch');
 	} else {
-		DZ.addEvent(document, 'DOMContentLoaded', fixAdr);
-		DZ.addEvent(window, 'load', fixAdr);
+		DZ.addEvent(document, 'DOMContentLoaded', fixNav);
+		DZ.addEvent(window, 'load', fixNav);
 	}
 
 	function scrollPage(target, time) {
@@ -325,30 +177,82 @@ window.DZ = (function DZ(){
 		return arr.join('&');
 	}
 
+	var loaderEl = DZ.getId('loader'),
+		errEl = DZ.getId('form-error'),
+		panEls = DZ.match('.pan'),
+		thanksEl = DZ.getId('thanks'),
+		draftEl = DZ.getId('draft'),
+		pEl = DZ.matchOne('p', thanksEl),
+		sentData = [],
+		revertText;
+
 	function sendEmail(form) {
-		var data = {
+		var self = this,
+			data = encodeURIComponent(JSON.stringify({
 				'name': form.name.value,
 				'email': form.email.value,
 				'subject': form.subject.value,
 				'message': form.message.value
-			},
+			})),
 			req = new XMLHttpRequest();
+
+		if(sentData.indexOf(data) > -1) {
+			return showThanks('I appreciate your desire to contact me, but the first email sent just fine, no need for another.');
+		}
+
+		DZ.addClass(loaderEl, 'on');
 		//console.log(serialize(data));
+
 		req.onreadystatechange = function(e) {
 			console.log('readyState:', req.readyState);
 			if(4 === req.readyState) {
 				console.log('status:', req.status);
+				DZ.removeClass(loaderEl, 'on');
 				if(200 === req.status) {
-
+					sentData.push(data);
+					showThanks();
 				} else {
+					errEl.innerHTML = ['Sorry, there was an error with your submission. Please try again or send an email to: <a href="mailto:resume', 'davidzuch.me">resume', 'davidzuch.me</a>'].join('@');
+					DZ.removeClass(errEl, 'hide');
 
+					var errH = errEl.offsetHeight;
+					errEl.style.height = '0';
+					setTimeout(function(){errEl.style.height = errH + 'px';}, 1);
 				}
 			}
 		};
 		req.open('POST', '/send', true);
 		req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		//req.setRequestHeader('Connection', 'close');
-		req.send('data=' + encodeURIComponent(JSON.stringify(data)));
+		req.send('data=' + data);
+	}
+
+	function showThanks(msg) {
+		if(msg) {
+			revertText = pEl.innerHTML;
+			pEl.innerHTML = msg;
+		}
+
+		panEls.each(function() {
+			this.style.left = '-100%';
+		});
+		panEls[0].style.height = draftEl.offsetHeight + 'px';
+		setTimeout(function(){panEls[0].style.height = thanksEl.offsetHeight + 'px';}, 1);
+	}
+
+	function showForm() {
+		panEls.each(function() {
+			this.style.left = '0';
+		});
+		panEls[0].style.height = thanksEl.offsetHeight + 'px';
+		setTimeout(function(){panEls[0].style.height = draftEl.offsetHeight + 'px';}, 1);
+
+		if(revertText) {
+			setTimeout(function() {
+				pEl.innerHTML = revertText;
+				revertText = '';
+			}, 500);
+		}
 	}
 
 	function onSubmit(e) {
@@ -357,6 +261,10 @@ window.DZ = (function DZ(){
 			errors = validate(form);
 
 		DZ.removeClass(DZ.match('.error', form), 'error');
+
+		DZ.addClass(errEl, 'hide');
+		errEl.innerHTML = '';
+		errEl.style.height = '';
 
 		if(errors.length) {
 			errors.each(function(){
@@ -370,6 +278,7 @@ window.DZ = (function DZ(){
 
 	DZ.addEvent('form', 'submit', onSubmit);
 	DZ.addEvent('.required', 'keyup change blur', liftError);
+	DZ.addEvent('#return', 'click', showForm);
 
 	DZ.match('h2, h3').each(function(){
 		this.innerHTML = this.innerHTML.replace(/(.)$/, '<span class="last-letter">$1</span>');

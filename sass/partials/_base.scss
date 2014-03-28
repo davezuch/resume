@@ -18,11 +18,14 @@ $error-color: #d80;
 $copy-width: 15.5em;
 $cutoff-width: $copy-width + 1em;
 $max-width: $copy-width + 3em;
+$copy-margin: ($max-width - $copy-width) / 2;
 $copy-width-x2: 20em;
 $cutoff-width-x2: $copy-width-x2 + 2em;
 $max-width-x2: $copy-width-x2 + 5em;
+$copy-margin-x2: ($max-width-x2 - $copy-width-x2) / 2;
 $copy-width-x3: 28em;
 $cutoff-width-x3: $copy-width-x3 + 2em;
 $max-width-x3: $copy-width-x3 + 5em;
+$copy-margin-x3: ($max-width-x3 - $copy-width-x3) / 2;
 
 @import "modules/all"
