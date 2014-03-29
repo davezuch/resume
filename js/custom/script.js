@@ -233,7 +233,7 @@ Modernizr.addTest('backgroundclip',function() {
 			req = new XMLHttpRequest();
 
 		if(sentData.indexOf(data) > -1) {
-			return showThanks('I appreciate your desire to contact me, but the first email sent just fine, no need for another.');
+			return showThanks('I appreciate your enthusiasm to reach me, but the first email sent succesfully, there\'s no need for a duplicate. :)');
 		}
 
 		DZ.addClass(loaderEl, 'on');
