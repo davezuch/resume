@@ -10,7 +10,8 @@ module.exports = function(grunt) {
       js:    ['js/custom/*.js'],
       css:   ['css/custom/*.css'],
       sass:  ['sass/*.scss'],
-      img:   ['img']
+      img:   ['img'],
+      html:  ['*.raw.html']
     },
 
     compass: {
@@ -153,7 +154,7 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      files: ['<%= files.grunt %>', '<%= files.js %>', '<%= files.css %>', '<%= files.sass %>'],
+      files: ['<%= files.grunt %>', '<%= files.js %>', '<%= files.css %>', '<%= files.sass %>', '<%= files.html %>'],
       tasks: ['default']
     }
   });
