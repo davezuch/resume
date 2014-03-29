@@ -258,7 +258,7 @@ header {
 
 		a {
 			@include alt-link;
-			padding: .5em;
+			padding: .75em;
 
 			@include respond(x3) {
 				padding: 1em;

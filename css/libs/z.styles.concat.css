@@ -1462,7 +1462,7 @@ header nav ul {
 }
 header nav a {
   color: white;
-  padding: .5em;
+  padding: .75em;
 }
 header nav a:visited {
   color: white;
