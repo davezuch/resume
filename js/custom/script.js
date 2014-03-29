@@ -43,7 +43,7 @@ Modernizr.addTest('backgroundclip',function() {
 			nHeight = nav.scrollHeight,
 			stickyCSS = DZ.newStyle('body.sticky { padding-top: ' + nHeight + 'px; }');
 
-		DZ.addEvent(scrollEl, 'scroll', onScroll);
+		DZ.addEvent(document, 'scroll', onScroll);
 	}
 
 	var touch = ('orientation' in window), ev;
