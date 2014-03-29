@@ -48,7 +48,8 @@ a {
 }
 
 img { max-width: 100%; }
-h1, h2, h3 { 
+
+h1, h2, h3 {
 	margin: 0;
 }
 h1, h2 {
@@ -78,7 +79,9 @@ h1, h2 {
 
 header {
 	@include respond(x3) {
-		padding-top: 344px;
+		.no-touch & {
+			padding-top: 344px;
+		}
 	}
 
 	div.belt {
@@ -89,12 +92,12 @@ header {
 		}
 
 		@include respond(x3) {
-			position: fixed;
-			top: 0;
-			//right: 0;
-			//left: 0;
-			z-index: 0;
-			width: 100%;
+			.no-touch & {
+				position: fixed;
+				top: 0;
+				z-index: 0;
+				width: 100%;
+			}
 			max-width: $max-width-x3;
 		}
 	}
@@ -129,7 +132,39 @@ header {
 		@include bg();
 		z-index:99;
 
-		.sticky & {
+		h3 {
+			text-indent: -999%;
+			text-align: left;
+			line-height: 1.75em;
+			@include respond(x3) {
+				display: none;
+			}
+
+			&:before {
+				content: '';
+				position: absolute;
+				top: 0.5em;
+				left: 0.5em;
+				width: .75em;
+				height: .75em;
+				/*height: 0.1em;
+				border-top: 0.375em double #fff;
+				border-bottom: 0.125em solid #fff;*/
+				@include background(
+					linear-gradient(
+						top,
+						#fff, #fff 20%,
+						transparent 20%, transparent 40%,
+						#fff 40%, #fff 60%,
+						transparent 60%, transparent 80%,
+						#fff 80%, #fff 100%
+					)
+				)
+			}
+		}
+
+		.sticky &,
+		.touch & {
 			position: fixed;
 			top: 0;
 			width: 100%;
@@ -143,18 +178,64 @@ header {
 			}
 		}
 
+		.nav-belt {
+			position: fixed;
+			top: 0;
+			bottom: 0;
+			left:-100%;
+			width: 50%;
+			overflow: hidden;
+			background-color: rgba(30, 70, 90,.9);
+			@include transition(left .5s);
+
+			@include respond(x3) {
+				position: relative;
+				left: 0;
+				padding: 0;
+				background-color: transparent;
+				width: 100%;
+			}
+
+			&.show {
+				left: 0;
+			}
+
+			&::before {
+				content: '';
+				position: absolute;
+				top: -1em;
+				left: -1em;
+				width: 200%;
+				height: 200%;
+				@include bg();
+				@include filter(blur(5px));
+				z-index: -1;
+				opacity: .65;
+
+				@include respond(x3) {
+					display: none;
+				}
+			}
+		}
+
 		ul {
-			display: table;
+			margin: -50% 0 0;
 			width: 100%;
-			//padding: 15px 0;
-			margin: 0;
-			//background-color: transparent;
-			//background-color: rgba(255,255,255,.25);
+			position: absolute;
+			top: 50%;
+			@include respond(x3) {
+				margin: 0;
+				position: relative;
+				top: 0;
+				left: 0;
+				display: table;
+			}
 		}
 
 		li {
-			display: table-cell;
-			//padding: 0 5px;
+			@include respond(x3) {
+				display: table-cell;
+			}
 		}
 
 		/*@include respond(x1) {
@@ -177,7 +258,11 @@ header {
 
 		a {
 			@include alt-link;
-			padding: 1em;
+			padding: .5em;
+
+			@include respond(x3) {
+				padding: 1em;
+			}
 
 			&:hover {
 				background: rgba(255,255,255,.15);
@@ -631,22 +716,25 @@ div.div {
 footer {
 	color: #fff;
 	max-width: $max-width;
+	opacity: .5;
 
 	@include respond(x2) {
 		padding: 1.5em 0;
 		max-width: $max-width-x2;
 	}
 	@include respond(x3) {
-		position: fixed;
-		bottom: 0;
-		width: 100%;
-		z-index: 0;
+		.no-touch & {
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+			z-index: 0;
+		}
 		line-height: 1em;
 		padding: 2.5em 0;
-		color: #666;
 		max-width: $max-width-x3;
 	}
 }
+
 nav {
 	ul {
 	  margin: 0;

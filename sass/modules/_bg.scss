@@ -4,8 +4,6 @@ $bg3: url(/img/bg.x3.jpg);
 
 @mixin bg($extra: '') {
 	background-color: #000;
-	background-attachment: fixed;
-	background-repeat: no-repeat;
 	background-position: 50% 0;
 	@if $extra != '' {
 		$extra: ', ' + $extra;
@@ -13,43 +11,55 @@ $bg3: url(/img/bg.x3.jpg);
 	@include respond(x1) {
 		background-image: $bg1 #{$extra};
 	}
-	@include respond(x2) {
-		background-image: $bg2 #{$extra};
-	}
-	/*@include respond(x3) {
-		background-image: $bg3 #{$extra};
-	}*/
-
 	.touch & {
-		background-size: 100%;
-		background-repeat: repeat;
+		@include respond(x2) {
+			background-image: $bg1 #{$extra};
+		}
+	}
+	.no-touch & {
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+		@include respond(x2) {
+			background-image: $bg2 #{$extra};
+		}
+	}
+	@include respond(x3) {
+		background-attachment: fixed;
+		//background-image: $bg3 #{$extra};
 	}
 }
 
 @mixin bgClipText {
-	background-color: #000;
-	background-attachment: fixed;
-	background-repeat: no-repeat;
-	background-position: 50% 0;
-	@include respond(x1) {
-		background-image: -webkit-linear-gradient(transparent, transparent), $bg1;
-		background-image: -o-linear-gradient(transparent, transparent);
-	}
-	@include respond(x2) {
-		background-image: -webkit-linear-gradient(transparent, transparent), $bg2;
-		background-image: -o-linear-gradient(transparent, transparent);
-	}
-	/*@include respond(x3) {
-		background-image: -webkit-linear-gradient(transparent, transparent), $bg3;
-		background-image: -o-linear-gradient(transparent, transparent);
-	}*/
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	@include selection($sel: '&') { background-color: $hover-color; }
+	color: rgb(30,70,90);
+	background: #fff;
 
-	.touch & {
-		background-size: 100%;
-		background-repeat: repeat;
+	.backgroundclip & {
+		background-color: #000;
+		.no-touch & {
+			background-attachment: fixed;
+		}
+		background-repeat: no-repeat;
+		background-position: 50% 0;
+		@include respond(x1) {
+			background-image: -webkit-linear-gradient(transparent, transparent), $bg1;
+			background-image: -o-linear-gradient(transparent, transparent);
+		}
+		@include respond(x2) {
+			background-image: -webkit-linear-gradient(transparent, transparent), $bg2;
+			background-image: -o-linear-gradient(transparent, transparent);
+		}
+		/*@include respond(x3) {
+			background-image: -webkit-linear-gradient(transparent, transparent), $bg3;
+			background-image: -o-linear-gradient(transparent, transparent);
+		}*/
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		@include selection($sel: '&') { background-color: $hover-color; }
+
+		.touch & {
+			background-size: 100%;
+			background-repeat: repeat;
+		}
 	}
 }
 

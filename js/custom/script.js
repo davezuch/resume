@@ -7,7 +7,17 @@
 
 // }(jQuery));
 
-/* global DZ, console */
+/* global DZ, Modernizr, console */
+
+Modernizr.addTest('backgroundclip',function() {
+	var div = document.createElement('div');
+	if ('webkitBackgroundClip' in div.style) {return true;}
+
+	'Webkit Moz O ms Khtml'.replace(/([A-Za-z]*)/g, function(val) { 
+		if (val+'BackgroundClip' in div.style) {return true;}
+	});
+
+});
 
 (function(){
 	DZ.scaleFix();
@@ -35,17 +45,17 @@
 	}
 
 	var touch = ('orientation' in window), ev;
-	if(touch) {
+	/*if(touch) {
 		DZ.addClass(document.body, 'touch');
-	} else {
+	} else {*/
 		DZ.addEvent(document, 'DOMContentLoaded', fixNav);
 		DZ.addEvent(window, 'load', fixNav);
-	}
+	//}
 
 	function scrollPage(target, time) {
 		if(!target) {return;}
-		time = time || 400;
-		var el = document.documentElement,
+		time = time || 500;
+		var el = DZ.UA.match(/webkit/i) ? document.body : document.documentElement,
 			offset = DZ.matchOne('header').offsetHeight,
 			from = el.scrollTop,
 			to = isNaN(target) ? target.offsetTop + offset : target,
@@ -55,18 +65,6 @@
 				el.scrollTop = (from + step * (to - from));
 				if(step === 1) {clearInterval(timer);}
 			}, 25);
-	}
-
-	function onBodyClick(e) {
-		var hash = e.target.hash;
-		if(!hash) {return;}
-
-		e.preventDefault();
-		scrollPage(DZ.matchOne(hash));
-
-		if(window.history.pushState) {
-			window.history.pushState({'hash': hash}, hash, hash);
-		}
 	}
 
 	function onPopState(e, data) {
@@ -80,8 +78,42 @@
 		}
 	}
 
-	DZ.addEvent(document.documentElement, 'click', onBodyClick);
+	var navEl = DZ.getId('nav-belt'),
+		navShown = false;
+
+	function showNav(e) {
+		//console.log('showNav', e);
+		DZ.addClass(navEl, 'show');
+		navShown = true;
+	}
+
+	function hideNav() {
+		DZ.removeClass(navEl, 'show');
+		navShown = false;
+	}
+
+	function onBodyClick(e) {
+		//console.log('bodyClick', e);
+		if(navShown && e.target.id !== 'nav-toggle') {
+			hideNav();
+		}
+
+		var hash = e.target.hash;
+		if(!hash) {
+			return;
+		}
+
+		e.preventDefault();
+		scrollPage(DZ.matchOne(hash));
+
+		if(window.history.pushState) {
+			window.history.pushState({'hash': hash}, hash, hash);
+		}
+	}
+
+	DZ.addEvent(document.documentElement, 'click touchend', onBodyClick);
 	DZ.addEvent(window, 'popstate', onPopState);
+	DZ.addEvent('#nav-toggle', 'click', showNav);
 
 	/*DZ.addEvent(DZ.match('textarea'), 'change keypress', function(){
 		DZ.removeClass(this, 'transit');

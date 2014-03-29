@@ -34,43 +34,33 @@
         <h2>Rich Media Developer & UI Designer</h2>
       </hgroup>
     </div>
-    <nav class="adr">
-      <ul class="belt">
-        <!--li>
-          <span class="street-address">828 Bay St Apt 1</span>
-          <span class="locality">San Francisco</span>,
-          <span class="region">CA</span>
-          <span class="postal-code">94109</span>
-        </li>
-        <li>
-          <a class="tel" href="tel:5623103233">562-310-3233</a>
-        </li>
-        <li>
-          <a class="email" href="#" title="reveal e-mail address">&hellip;@davidzuch.me</a>
-        </li-->
-        <li>
-          <a href="#profile">Profile</a>
-        </li>
-        <li>
-          <a href="#skills">Skills</a>
-        </li>
-        <li>
-          <a href="#experience">Experience</a>
-        </li>
-        <li>
-          <a href="#education">Education</a>
-        </li>
-        <li>
-          <a href="#contact">Contact</a>
-        </li>
-      </ul>
+    <nav>
+      <h3 id="nav-toggle">Menu</h3>
+      <div class="nav-belt" id="nav-belt">
+        <ul>
+          <li>
+            <a href="#profile">Profile</a>
+          </li>
+          <li>
+            <a href="#skills">Skills</a>
+          </li>
+          <li>
+            <a href="#experience">Experience</a>
+          </li>
+          <li>
+            <a href="#education">Education</a>
+          </li>
+          <li>
+            <a href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
     </nav>
   </header>
 
   <div id="main" role="main">
     <section id="profile" class="profile">
       <h2>Professional Profile</h2>
-      <div class="div"></div>
       <div class="island">
         <ul class="brag ornate">
           <li>
@@ -105,20 +95,22 @@
     </section>
     <section id="skills">
       <h2>Technical Skills</h2>
-      <div class="div"></div>
       <div class="island">
         <ul class="brag ornate">
           <li>
-            Highly profficient in <strong>HTML, JavaScript & CSS,</strong> and skilled at using any derivitive technologies and frameworks such as <strong>jQuery, Backbone, Ember, YUI, SASS, Compass, web fonts,</strong> etc.
+            Highly profficient in <strong>HTML, JavaScript & CSS,</strong> and skilled at using any derivitive technologies and frameworks such as <strong>jQuery, Node JS, Backbone, Ember, YUI, SASS, Compass, web fonts,</strong> etc.
           </li>
           <li>
             Develops using <strong>mobile-first, responsive web design</strong> practices and with <strong>performace</strong> in mind.
           </li>
           <li>
-            Regular workflow includes heavy use of <strong>command-line</strong>, leveraging technologies such as <strong>Node JS, NPM, Grunt, Git, SVN, Bower, Brew, Pip, ZSH,</strong> etc.
+            Regular workflow includes heavy use of <strong>command-line</strong>, frequently leveraging technologies such as <strong>NPM, Grunt, Git, SVN, Bower, Pip, Brew, ZSH,</strong> etc.
           </li>
           <li>
-            Comfortable working with most any back-end language such as <strong>Python, Ruby,</strong> PHP, Java, ASP.net, C#, etc., as well as their frameworks such as <strong>Django, Rails,</strong> Smarty, JSP, etc.
+            Comfortable working with most any back-end language such as <strong>Python, Ruby,</strong> PHP, Java, ASP.net, C#, etc., as well as popular frameworks such as <strong>Django, Flask, TurboGears, Rails,</strong> Smarty, JSP, etc.
+          </li>
+          <li>
+            Preference for writing <strong>clean, abstract, exstensible, object-oriented code</strong>.
           </li>
         </ul>
       </div>
@@ -281,7 +273,10 @@
       </div>
     </section>
   </div> <!-- /#main -->
-  <footer><p>&copy; David Zuch</p></footer>
+  <footer>
+    <p>Built by <strong>David Zuch</strong></p>
+    <p><small>Powered by Flask</small></p>
+  </footer>
 </div> <!-- /#wrapper -->
 
 

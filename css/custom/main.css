@@ -221,7 +221,10 @@ footer p {
   font-size: 14px;
   font-size: 1.4rem;
   letter-spacing: .1em;
+}
+footer p strong {
   text-transform: uppercase;
+  font-weight: normal;
 }
 
 input, textarea {
@@ -284,12 +287,7 @@ div.div.end {
 body {
   color: black;
   background-color: #000;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
   background-position: 50% 0;
-  /*@include respond(x3) {
-  	background-image: $bg3 ;
-  }*/
 }
 @media only screen and (max-width: 512px) {
   body {
@@ -297,13 +295,23 @@ body {
   }
 }
 @media only screen and (min-width: 513px) {
-  body {
+  .touch body {
+    background-image: url(/img/bg.jpg) ;
+  }
+}
+.no-touch body {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+@media only screen and (min-width: 513px) {
+  .no-touch body {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-.touch body {
-  background-size: 100%;
-  background-repeat: repeat;
+@media only screen and (min-width: 751px) {
+  body {
+    background-attachment: fixed;
+  }
 }
 
 a {
@@ -337,8 +345,11 @@ h1, h2, h3, .btn-belt button {
 }
 
 h1, h2 {
+  color: #1e465a;
+  background: #fff;
+}
+.backgroundclip h1, .backgroundclip h2 {
   background-color: #000;
-  background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: 50% 0;
   /*@include respond(x3) {
@@ -348,25 +359,28 @@ h1, h2 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.no-touch .backgroundclip h1, .no-touch .backgroundclip h2 {
+  background-attachment: fixed;
+}
 @media only screen and (max-width: 512px) {
-  h1, h2 {
+  .backgroundclip h1, .backgroundclip h2 {
     background-image: -webkit-linear-gradient(transparent, transparent), url(/img/bg.jpg);
     background-image: -o-linear-gradient(transparent, transparent);
   }
 }
 @media only screen and (min-width: 513px) {
-  h1, h2 {
+  .backgroundclip h1, .backgroundclip h2 {
     background-image: -webkit-linear-gradient(transparent, transparent), url(/img/bg.x2.jpg);
     background-image: -o-linear-gradient(transparent, transparent);
   }
 }
-h1::-moz-selection, h2::-moz-selection {
+.backgroundclip h1::-moz-selection, .backgroundclip h2::-moz-selection {
   background-color: #196895;
 }
-h1::selection, h2::selection {
+.backgroundclip h1::selection, .backgroundclip h2::selection {
   background-color: #196895;
 }
-.touch h1, .touch h2 {
+.touch .backgroundclip h1, .touch .backgroundclip h2 {
   background-size: 100%;
   background-repeat: repeat;
 }
@@ -399,7 +413,7 @@ h1::selection, h2::selection {
 }
 
 @media only screen and (min-width: 751px) {
-  header {
+  .no-touch header {
     padding-top: 344px;
   }
 }
@@ -413,11 +427,13 @@ header div.belt {
 }
 @media only screen and (min-width: 751px) {
   header div.belt {
+    max-width: 33em;
+  }
+  .no-touch header div.belt {
     position: fixed;
     top: 0;
     z-index: 0;
     width: 100%;
-    max-width: 33em;
   }
 }
 header hgroup {
@@ -450,12 +466,7 @@ header nav {
   position: relative;
   color: #fff;
   background-color: #000;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
   background-position: 50% 0;
-  /*@include respond(x3) {
-  	background-image: $bg3 ;
-  }*/
   z-index: 99;
   		/*@include respond(x1) {
   			//li:first-child {
@@ -500,41 +511,158 @@ header nav {
   }
 }
 @media only screen and (min-width: 513px) {
-  header nav {
+  .touch header nav {
+    background-image: url(/img/bg.jpg) ;
+  }
+}
+.no-touch header nav {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+@media only screen and (min-width: 513px) {
+  .no-touch header nav {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-.touch header nav {
-  background-size: 100%;
-  background-repeat: repeat;
+@media only screen and (min-width: 751px) {
+  header nav {
+    background-attachment: fixed;
+  }
 }
-.sticky header nav {
+header nav h3, header nav .btn-belt button, .btn-belt header nav button {
+  text-indent: -999%;
+  text-align: left;
+  line-height: 1.75em;
+}
+@media only screen and (min-width: 751px) {
+  header nav h3, header nav .btn-belt button, .btn-belt header nav button {
+    display: none;
+  }
+}
+header nav h3:before, header nav .btn-belt button:before, .btn-belt header nav button:before {
+  content: '';
+  position: absolute;
+  top: 0.5em;
+  left: 0.5em;
+  width: .75em;
+  height: .75em;
+  /*height: 0.1em;
+  border-top: 0.375em double #fff;
+  border-bottom: 0.125em solid #fff;*/
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(20%, #ffffff), color-stop(20%, transparent), color-stop(40%, transparent), color-stop(40%, #ffffff), color-stop(60%, #ffffff), color-stop(60%, transparent), color-stop(80%, transparent), color-stop(80%, #ffffff), color-stop(100%, #ffffff));
+  background: -webkit-linear-gradient(top, #ffffff, #ffffff 20%, transparent 20%, transparent 40%, #ffffff 40%, #ffffff 60%, transparent 60%, transparent 80%, #ffffff 80%, #ffffff 100%);
+  background: -moz-linear-gradient(top, #ffffff, #ffffff 20%, transparent 20%, transparent 40%, #ffffff 40%, #ffffff 60%, transparent 60%, transparent 80%, #ffffff 80%, #ffffff 100%);
+  background: -o-linear-gradient(top, #ffffff, #ffffff 20%, transparent 20%, transparent 40%, #ffffff 40%, #ffffff 60%, transparent 60%, transparent 80%, #ffffff 80%, #ffffff 100%);
+  background: linear-gradient(top, #ffffff, #ffffff 20%, transparent 20%, transparent 40%, #ffffff 40%, #ffffff 60%, transparent 60%, transparent 80%, #ffffff 80%, #ffffff 100%);
+}
+.sticky header nav, .touch header nav {
   position: fixed;
   top: 0;
   width: 100%;
   max-width: 18.5em;
 }
 @media only screen and (min-width: 513px) {
-  .sticky header nav {
+  .sticky header nav, .touch header nav {
     max-width: 25em;
   }
 }
 @media only screen and (min-width: 751px) {
-  .sticky header nav {
+  .sticky header nav, .touch header nav {
     max-width: 33em;
   }
 }
-header nav ul {
-  display: table;
-  width: 100%;
-  margin: 0;
+header nav .nav-belt {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: -100%;
+  width: 50%;
+  overflow: hidden;
+  background-color: rgba(30, 70, 90, 0.9);
+  -webkit-transition: left 0.5s;
+  -moz-transition: left 0.5s;
+  -o-transition: left 0.5s;
+  transition: left 0.5s;
 }
-header nav li {
-  display: table-cell;
+@media only screen and (min-width: 751px) {
+  header nav .nav-belt {
+    position: relative;
+    left: 0;
+    padding: 0;
+    background-color: transparent;
+    width: 100%;
+  }
+}
+header nav .nav-belt.show {
+  left: 0;
+}
+header nav .nav-belt::before {
+  content: '';
+  position: absolute;
+  top: -1em;
+  left: -1em;
+  width: 200%;
+  height: 200%;
+  background-color: #000;
+  background-position: 50% 0;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  filter: blur(5px);
+  z-index: -1;
+  opacity: .65;
+}
+@media only screen and (max-width: 512px) {
+  header nav .nav-belt::before {
+    background-image: url(/img/bg.jpg) ;
+  }
+}
+@media only screen and (min-width: 513px) {
+  .touch header nav .nav-belt::before {
+    background-image: url(/img/bg.jpg) ;
+  }
+}
+.no-touch header nav .nav-belt::before {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+@media only screen and (min-width: 513px) {
+  .no-touch header nav .nav-belt::before {
+    background-image: url(/img/bg.x2.jpg) ;
+  }
+}
+@media only screen and (min-width: 751px) {
+  header nav .nav-belt::before {
+    background-attachment: fixed;
+  }
+}
+@media only screen and (min-width: 751px) {
+  header nav .nav-belt::before {
+    display: none;
+  }
+}
+header nav ul {
+  margin: -50% 0 0;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+}
+@media only screen and (min-width: 751px) {
+  header nav ul {
+    margin: 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    display: table;
+  }
+}
+@media only screen and (min-width: 751px) {
+  header nav li {
+    display: table-cell;
+  }
 }
 header nav a {
   color: white;
-  padding: 1em;
+  padding: .5em;
 }
 header nav a:visited {
   color: white;
@@ -542,18 +670,18 @@ header nav a:visited {
 header nav a:hover {
   color: rgba(255, 255, 255, 0.9);
 }
+@media only screen and (min-width: 751px) {
+  header nav a {
+    padding: 1em;
+  }
+}
 header nav a:hover {
   background: rgba(255, 255, 255, 0.15);
 }
 
 #main {
   background-color: #000;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
   background-position: 50% 0;
-  /*@include respond(x3) {
-  	background-image: $bg3 ;
-  }*/
   position: relative;
   z-index: 1;
   /*
@@ -571,13 +699,23 @@ header nav a:hover {
   }
 }
 @media only screen and (min-width: 513px) {
-  #main {
+  .touch #main {
+    background-image: url(/img/bg.jpg) ;
+  }
+}
+.no-touch #main {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+@media only screen and (min-width: 513px) {
+  .no-touch #main {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-.touch #main {
-  background-size: 100%;
-  background-repeat: repeat;
+@media only screen and (min-width: 751px) {
+  #main {
+    background-attachment: fixed;
+  }
 }
 #main > section {
   background: #fff;
@@ -599,12 +737,7 @@ header nav a:hover {
   height: 100%;
   width: 100%;
   background-color: #000;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
   background-position: 50% 0;
-  /*@include respond(x3) {
-  	background-image: $bg3 ;
-  }*/
   opacity: .33;
   z-index: -1;
 }
@@ -614,13 +747,23 @@ header nav a:hover {
   }
 }
 @media only screen and (min-width: 513px) {
-  #main h2::before, #main h3::before, #main .btn-belt button::before, .btn-belt #main button::before {
+  .touch #main h2::before, .touch #main h3::before, .touch #main .btn-belt button::before, .btn-belt .touch #main button::before {
+    background-image: url(/img/bg.jpg) ;
+  }
+}
+.no-touch #main h2::before, .no-touch #main h3::before, .no-touch #main .btn-belt button::before, .btn-belt .no-touch #main button::before {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+@media only screen and (min-width: 513px) {
+  .no-touch #main h2::before, .no-touch #main h3::before, .no-touch #main .btn-belt button::before, .btn-belt .no-touch #main button::before {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-.touch #main h2::before, .touch #main h3::before, .touch #main .btn-belt button::before, .btn-belt .touch #main button::before {
-  background-size: 100%;
-  background-repeat: repeat;
+@media only screen and (min-width: 751px) {
+  #main h2::before, #main h3::before, #main .btn-belt button::before, .btn-belt #main button::before {
+    background-attachment: fixed;
+  }
 }
 #main h2::after, #main h3::after, #main .btn-belt button::after, .btn-belt #main button::after {
   position: absolute;
@@ -631,12 +774,7 @@ header nav a:hover {
   height: 1px;
   width: 100%;
   background-color: #000;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
   background-position: 50% 0;
-  /*@include respond(x3) {
-  	background-image: $bg3 ;
-  }*/
   z-index: 2;
 }
 @media only screen and (max-width: 512px) {
@@ -645,13 +783,23 @@ header nav a:hover {
   }
 }
 @media only screen and (min-width: 513px) {
-  #main h2::after, #main h3::after, #main .btn-belt button::after, .btn-belt #main button::after {
+  .touch #main h2::after, .touch #main h3::after, .touch #main .btn-belt button::after, .btn-belt .touch #main button::after {
+    background-image: url(/img/bg.jpg) ;
+  }
+}
+.no-touch #main h2::after, .no-touch #main h3::after, .no-touch #main .btn-belt button::after, .btn-belt .no-touch #main button::after {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+@media only screen and (min-width: 513px) {
+  .no-touch #main h2::after, .no-touch #main h3::after, .no-touch #main .btn-belt button::after, .btn-belt .no-touch #main button::after {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-.touch #main h2::after, .touch #main h3::after, .touch #main .btn-belt button::after, .btn-belt .touch #main button::after {
-  background-size: 100%;
-  background-repeat: repeat;
+@media only screen and (min-width: 751px) {
+  #main h2::after, #main h3::after, #main .btn-belt button::after, .btn-belt #main button::after {
+    background-attachment: fixed;
+  }
 }
 #main h3, #main .btn-belt button, .btn-belt #main button {
   color: #fff;
@@ -733,12 +881,7 @@ header nav a:hover {
   height: 1px;
   width: 100%;
   background-color: #000;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
   background-position: 50% 0;
-  /*@include respond(x3) {
-  	background-image: $bg3 ;
-  }*/
 }
 @media only screen and (max-width: 512px) {
   #main li ul::before {
@@ -746,13 +889,23 @@ header nav a:hover {
   }
 }
 @media only screen and (min-width: 513px) {
-  #main li ul::before {
+  .touch #main li ul::before {
+    background-image: url(/img/bg.jpg) ;
+  }
+}
+.no-touch #main li ul::before {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+@media only screen and (min-width: 513px) {
+  .no-touch #main li ul::before {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-.touch #main li ul::before {
-  background-size: 100%;
-  background-repeat: repeat;
+@media only screen and (min-width: 751px) {
+  #main li ul::before {
+    background-attachment: fixed;
+  }
 }
 #main li li {
   padding: .25em;
@@ -767,12 +920,7 @@ header nav a:hover {
   height: 1px;
   width: 100%;
   background-color: #000;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
   background-position: 50% 0;
-  /*@include respond(x3) {
-  	background-image: $bg3 ;
-  }*/
 }
 @media only screen and (max-width: 512px) {
   #main li li::after {
@@ -780,13 +928,23 @@ header nav a:hover {
   }
 }
 @media only screen and (min-width: 513px) {
-  #main li li::after {
+  .touch #main li li::after {
+    background-image: url(/img/bg.jpg) ;
+  }
+}
+.no-touch #main li li::after {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+@media only screen and (min-width: 513px) {
+  .no-touch #main li li::after {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-.touch #main li li::after {
-  background-size: 100%;
-  background-repeat: repeat;
+@media only screen and (min-width: 751px) {
+  #main li li::after {
+    background-attachment: fixed;
+  }
 }
 #main li::after {
   position: absolute;
@@ -797,12 +955,7 @@ header nav a:hover {
   height: 5px;
   width: 100%;
   background-color: #000;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
   background-position: 50% 0;
-  /*@include respond(x3) {
-  	background-image: $bg3 ;
-  }*/
 }
 @media only screen and (max-width: 512px) {
   #main li::after {
@@ -810,13 +963,23 @@ header nav a:hover {
   }
 }
 @media only screen and (min-width: 513px) {
-  #main li::after {
+  .touch #main li::after {
+    background-image: url(/img/bg.jpg) ;
+  }
+}
+.no-touch #main li::after {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+@media only screen and (min-width: 513px) {
+  .no-touch #main li::after {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-.touch #main li::after {
-  background-size: 100%;
-  background-repeat: repeat;
+@media only screen and (min-width: 751px) {
+  #main li::after {
+    background-attachment: fixed;
+  }
 }
 #main .loader {
   text-align: center;
@@ -863,12 +1026,7 @@ header nav a:hover {
   position: relative;
   margin-top: 34%;
   background-color: #000;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
   background-position: 50% 0;
-  /*@include respond(x3) {
-  	background-image: $bg3 ;
-  }*/
   background-color: #001e3c;
 }
 @media only screen and (max-width: 512px) {
@@ -877,13 +1035,23 @@ header nav a:hover {
   }
 }
 @media only screen and (min-width: 513px) {
-  #main .loader .dot {
+  .touch #main .loader .dot {
+    background-image: url(/img/bg.jpg) ;
+  }
+}
+.no-touch #main .loader .dot {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+@media only screen and (min-width: 513px) {
+  .no-touch #main .loader .dot {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-.touch #main .loader .dot {
-  background-size: 100%;
-  background-repeat: repeat;
+@media only screen and (min-width: 751px) {
+  #main .loader .dot {
+    background-attachment: fixed;
+  }
 }
 
 .window {
@@ -1069,12 +1237,7 @@ header nav a:hover {
   height: 5px;
   width: 100%;
   background-color: #000;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
   background-position: 50% 0;
-  /*@include respond(x3) {
-  	background-image: $bg3 ;
-  }*/
   margin-top: -5px;
 }
 @media only screen and (max-width: 512px) {
@@ -1084,15 +1247,27 @@ header nav a:hover {
   }
 }
 @media only screen and (min-width: 513px) {
-  .ornate p:first-child::before,
+  .touch .ornate p:first-child::before, .touch
+  .ornate > li:first-child::before {
+    background-image: url(/img/bg.jpg) ;
+  }
+}
+.no-touch .ornate p:first-child::before, .no-touch
+.ornate > li:first-child::before {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+@media only screen and (min-width: 513px) {
+  .no-touch .ornate p:first-child::before, .no-touch
   .ornate > li:first-child::before {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-.touch .ornate p:first-child::before, .touch
-.ornate > li:first-child::before {
-  background-size: 100%;
-  background-repeat: repeat;
+@media only screen and (min-width: 751px) {
+  .ornate p:first-child::before,
+  .ornate > li:first-child::before {
+    background-attachment: fixed;
+  }
 }
 .ornate p:last-child::after {
   position: absolute;
@@ -1103,12 +1278,7 @@ header nav a:hover {
   height: 5px;
   width: 100%;
   background-color: #000;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
   background-position: 50% 0;
-  /*@include respond(x3) {
-  	background-image: $bg3 ;
-  }*/
   margin-bottom: -5px;
 }
 @media only screen and (max-width: 512px) {
@@ -1117,13 +1287,23 @@ header nav a:hover {
   }
 }
 @media only screen and (min-width: 513px) {
-  .ornate p:last-child::after {
+  .touch .ornate p:last-child::after {
+    background-image: url(/img/bg.jpg) ;
+  }
+}
+.no-touch .ornate p:last-child::after {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+@media only screen and (min-width: 513px) {
+  .no-touch .ornate p:last-child::after {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-.touch .ornate p:last-child::after {
-  background-size: 100%;
-  background-repeat: repeat;
+@media only screen and (min-width: 751px) {
+  .ornate p:last-child::after {
+    background-attachment: fixed;
+  }
 }
 
 /*.ornate::before {
@@ -1175,12 +1355,7 @@ ul.ornate::after {
   height: 1px;
   width: 100%;
   background-color: #000;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
   background-position: 50% 0;
-  /*@include respond(x3) {
-  	background-image: $bg3 ;
-  }*/
 }
 @media only screen and (max-width: 512px) {
   .row label::before {
@@ -1188,13 +1363,23 @@ ul.ornate::after {
   }
 }
 @media only screen and (min-width: 513px) {
-  .row label::before {
+  .touch .row label::before {
+    background-image: url(/img/bg.jpg) ;
+  }
+}
+.no-touch .row label::before {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+@media only screen and (min-width: 513px) {
+  .no-touch .row label::before {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-.touch .row label::before {
-  background-size: 100%;
-  background-repeat: repeat;
+@media only screen and (min-width: 751px) {
+  .row label::before {
+    background-attachment: fixed;
+  }
 }
 .row .textbelt {
   overflow: visible;
@@ -1314,6 +1499,7 @@ div.div {
 footer {
   color: #fff;
   max-width: 18.5em;
+  opacity: .5;
 }
 @media only screen and (min-width: 513px) {
   footer {
@@ -1323,14 +1509,15 @@ footer {
 }
 @media only screen and (min-width: 751px) {
   footer {
+    line-height: 1em;
+    padding: 2.5em 0;
+    max-width: 33em;
+  }
+  .no-touch footer {
     position: fixed;
     bottom: 0;
     width: 100%;
     z-index: 0;
-    line-height: 1em;
-    padding: 2.5em 0;
-    color: #666;
-    max-width: 33em;
   }
 }
 
