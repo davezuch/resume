@@ -35,9 +35,6 @@ $bg3: url(/img/bg.x3.jpg);
 
 	.backgroundclip & {
 		background-color: #000;
-		.no-touch & {
-			background-attachment: fixed;
-		}
 		background-repeat: no-repeat;
 		background-position: 50% 0;
 		@include respond(x1) {
@@ -56,10 +53,13 @@ $bg3: url(/img/bg.x3.jpg);
 		-webkit-text-fill-color: transparent;
 		@include selection($sel: '&') { background-color: $hover-color; }
 
-		.touch & {
-			background-size: 100%;
-			background-repeat: repeat;
-		}
+	}
+	.no-touch.backgroundclip & {
+		background-attachment: fixed;
+	}
+	.touch.backgroundclip & {
+		background-size: 100%;
+		background-repeat: repeat;
 	}
 }
 
