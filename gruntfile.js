@@ -140,6 +140,18 @@ module.exports = function(grunt) {
       }
     },
 
+    htmlmin: {
+      dist: {
+        options: {
+          removeComments: true,
+          collapseWhitespace: true
+        },
+        files: {
+          'index.html': 'index.raw.html'
+        }
+      }
+    },
+
     watch: {
       files: ['<%= files.grunt %>', '<%= files.js %>', '<%= files.css %>', '<%= files.sass %>'],
       tasks: ['default']
@@ -155,6 +167,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-csslint');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-smushit');
 
   /**
@@ -185,7 +198,8 @@ module.exports = function(grunt) {
                       'concat:css',
                       'concat:csslibs',
                       'cssmin',
-                      'concat:cssmin'
+                      'concat:cssmin',
+                      'htmlmin'
                     ]);
 
   /**
