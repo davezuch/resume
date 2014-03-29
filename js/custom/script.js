@@ -14,9 +14,8 @@ Modernizr.addTest('backgroundclip',function() {
 	if ('webkitBackgroundClip' in div.style) {return true;}
 
 	'Webkit Moz O ms Khtml'.replace(/([A-Za-z]*)/g, function(val) { 
-		if (val+'BackgroundClip' in div.style) {return true;}
+		if (val + 'BackgroundClip' in div.style) {return true;}
 	});
-
 });
 
 (function(){
@@ -27,13 +26,6 @@ Modernizr.addTest('backgroundclip',function() {
 	var scrollEl = DZ.UA.match(/webkit/i) ? document.body : document.documentElement;
 
 	function fixNav() {
-		function onScroll(e) {
-			var sY = window.scrollY;
-			sY >= origOffsetY ? DZ.addClass(scrollEl, 'sticky') : DZ.removeClass(scrollEl, 'sticky');
-
-			/*if(sY <= hHeight) { DZ.updateStyle(stickyCSS, 'header div.belt { top: ' + -(sY / 2) + 'px; }'); }*/
-		}
-
 		var header = DZ.matchOne('header div.belt'),
 			hHeight = header.scrollHeight,
 
@@ -42,6 +34,17 @@ Modernizr.addTest('backgroundclip',function() {
 			origOffsetY = nav.offsetTop,
 			nHeight = nav.scrollHeight,
 			stickyCSS = DZ.newStyle('body.sticky { padding-top: ' + nHeight + 'px; }');
+
+		function onScroll(e) {
+			var sY = scrollEl.scrollTop;
+			if(sY >= origOffsetY) {
+				DZ.addClass(scrollEl, 'sticky');
+			} else {
+				DZ.removeClass(scrollEl, 'sticky');
+			}
+
+			/*if(sY <= hHeight) { DZ.updateStyle(stickyCSS, 'header div.belt { top: ' + -(sY / 2) + 'px; }'); }*/
+		}
 
 		DZ.addEvent(document, 'scroll', onScroll);
 	}
