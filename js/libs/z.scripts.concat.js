@@ -277,10 +277,12 @@ Modernizr.addTest('backgroundclip',function() {
 	DZ.hideUrlBarOnLoad();
 	DZ.enableActive();
 
+	var scrollEl = DZ.UA.match(/webkit/i) ? document.body : document.documentElement;
+
 	function fixNav() {
 		function onScroll(e) {
 			var sY = window.scrollY;
-			sY >= origOffsetY ? DZ.addClass(document.body, 'sticky') : DZ.removeClass(document.body, 'sticky');
+			sY >= origOffsetY ? DZ.addClass(scrollEl, 'sticky') : DZ.removeClass(scrollEl, 'sticky');
 
 			/*if(sY <= hHeight) { DZ.updateStyle(stickyCSS, 'header div.belt { top: ' + -(sY / 2) + 'px; }'); }*/
 		}
@@ -294,7 +296,7 @@ Modernizr.addTest('backgroundclip',function() {
 			nHeight = nav.scrollHeight,
 			stickyCSS = DZ.newStyle('body.sticky { padding-top: ' + nHeight + 'px; }');
 
-		DZ.addEvent(document, 'scroll', onScroll);
+		DZ.addEvent(scrollEl, 'scroll', onScroll);
 	}
 
 	var touch = ('orientation' in window), ev;
@@ -308,14 +310,13 @@ Modernizr.addTest('backgroundclip',function() {
 	function scrollPage(target, time) {
 		if(!target) {return;}
 		time = time || 500;
-		var el = DZ.UA.match(/webkit/i) ? document.body : document.documentElement,
-			offset = DZ.matchOne('header').offsetHeight,
-			from = el.scrollTop,
+		var offset = DZ.matchOne('header').offsetHeight,
+			from = scrollEl.scrollTop,
 			to = isNaN(target) ? target.offsetTop + offset : target,
 			start = new Date().getTime(),
 			timer = setInterval(function() {
 				var step = Math.min(1, (new Date().getTime()-start) / time);
-				el.scrollTop = (from + step * (to - from));
+				scrollEl.scrollTop = (from + step * (to - from));
 				if(step === 1) {clearInterval(timer);}
 			}, 25);
 	}
@@ -491,7 +492,7 @@ Modernizr.addTest('backgroundclip',function() {
 		req.onreadystatechange = function(e) {
 			console.log('readyState:', req.readyState);
 			if(4 === req.readyState) {
-				console.log('status:', req.status);
+				//console.log('status:', req.status);
 				DZ.removeClass(loaderEl, 'on');
 				if(200 === req.status) {
 					sentData.push(data);
