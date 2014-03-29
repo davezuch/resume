@@ -258,7 +258,11 @@ header {
 
 		a {
 			@include alt-link;
-			padding: 1em;
+			padding: .85em;
+
+			@include respond(x3) {
+				padding: 1em;
+			}
 
 			&:hover {
 				background: rgba(255,255,255,.15);
