@@ -286,7 +286,7 @@ Modernizr.addTest('backgroundclip',function() {
 			//header = DZ.matchOne('header'),
 			origOffsetY = nav.offsetTop,
 			nHeight = nav.scrollHeight,
-			stickyCSS = DZ.newStyle('body.sticky { padding-top: ' + nHeight + 'px; }');
+			stickyCSS = DZ.newStyle('body.sticky, html.sticky body { padding-top: ' + nHeight + 'px; }');
 
 		function onScroll(e) {
 			var sY = scrollEl.scrollTop;
