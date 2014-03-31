@@ -1493,9 +1493,8 @@ div.div {
 }
 */
 footer {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.5);
   max-width: 18.5em;
-  opacity: .5;
 }
 @media only screen and (min-width: 513px) {
   footer {
@@ -1515,6 +1514,11 @@ footer {
     width: 100%;
     z-index: 0;
   }
+}
+footer a, footer a:visited {
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 nav ul {

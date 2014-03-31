@@ -714,9 +714,8 @@ div.div {
 }
 */
 footer {
-	color: #fff;
+	color: rgba(255,255,255,.5);
 	max-width: $max-width;
-	opacity: .5;
 
 	@include respond(x2) {
 		padding: 1.5em 0;
@@ -732,6 +731,12 @@ footer {
 		line-height: 1em;
 		padding: 2.5em 0;
 		max-width: $max-width-x3;
+	}
+
+	a, a:visited {
+		color: rgba(255,255,255,.75);
+		font-weight: bold;
+		text-transform: uppercase;
 	}
 }
 
