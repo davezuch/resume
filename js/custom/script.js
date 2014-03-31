@@ -59,6 +59,12 @@ Modernizr.addTest('backgroundclip',function() {
 
 			// preserving for callbacks with lost scope
 			this.$formErr = $formErr;
+
+			setTimeout(function(){
+				if($('shinebar').length) {
+					$('html').style('margin-top', '');
+				}
+			}, 500);
 		};
 
 	R.prototype = {
