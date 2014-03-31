@@ -69,6 +69,9 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      options: {
+        sourceMap: true
+      },
       dist: {
         src: ['js/libs/z.scripts.concat.js'],
         dest: 'js/min/scripts.min.js'
@@ -85,7 +88,7 @@ module.exports = function(grunt) {
         eqeqeq: true,
         immed: true,
         latedef: true,
-        newcap: true,
+        newcap: false,
         noarg: true,
         sub: true,
         undef: true,

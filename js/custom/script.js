@@ -7,7 +7,7 @@
 
 // }(jQuery));
 
-/* global DZ, Modernizr, console */
+/* global $:true, deez, Modernizr, console */
 
 Modernizr.addTest('backgroundclip',function() {
 	var div = document.createElement('div');
@@ -18,305 +18,272 @@ Modernizr.addTest('backgroundclip',function() {
 	});
 });
 
-(function(){
-	DZ.scaleFix();
-	DZ.hideUrlBarOnLoad();
-	DZ.enableActive();
+(function() {
+	var ascope = this,
+		$ = deez,
+		win = window,
+		doc = window.document,
+		scrollEl = $.scrollEl,
+		touch = ('orientation' in window),
 
-	var scrollEl = DZ.UA.match(/webkit/i) ? document.body : document.documentElement;
+		$navBelt = $('#nav-belt'),
+		navShown = false,
 
-	function fixNav() {
-		var header = DZ.matchOne('header div.belt'),
-			hHeight = header.scrollHeight,
-
-			nav = DZ.matchOne('header nav'),
-			//header = DZ.matchOne('header'),
-			origOffsetY = nav.offsetTop,
-			nHeight = nav.scrollHeight,
-			stickyCSS = DZ.newStyle('body.sticky, html.sticky body { padding-top: ' + nHeight + 'px; }');
-
-		function onScroll(e) {
-			var sY = scrollEl.scrollTop;
-			if(sY >= origOffsetY) {
-				DZ.addClass(scrollEl, 'sticky');
-			} else {
-				DZ.removeClass(scrollEl, 'sticky');
-			}
-
-			/*if(sY <= hHeight) { DZ.updateStyle(stickyCSS, 'header div.belt { top: ' + -(sY / 2) + 'px; }'); }*/
-		}
-
-		DZ.addEvent(document, 'scroll', onScroll);
-	}
-
-	var touch = ('orientation' in window), ev;
-	/*if(touch) {
-		DZ.addClass(document.body, 'touch');
-	} else {*/
-		DZ.addEvent(document, 'DOMContentLoaded', fixNav);
-		DZ.addEvent(window, 'load', fixNav);
-	//}
-
-	function scrollPage(target, time) {
-		if(!target) {return;}
-		time = time || 500;
-		var offset = DZ.matchOne('header').offsetHeight,
-			from = scrollEl.scrollTop,
-			to = isNaN(target) ? target.offsetTop + offset : target,
-			start = new Date().getTime(),
-			timer = setInterval(function() {
-				var step = Math.min(1, (new Date().getTime()-start) / time);
-				scrollEl.scrollTop = (from + step * (to - from));
-				if(step === 1) {clearInterval(timer);}
-			}, 25);
-	}
-
-	function onPopState(e, data) {
-		var hash = window.location.hash;
-		e.preventDefault();
-
-		if(hash) {
-			scrollPage(DZ.matchOne(hash));
-		} else {
-			scrollPage(0);
-		}
-	}
-
-	var navEl = DZ.getId('nav-belt'),
-		navShown = false;
-
-	function showNav(e) {
-		//console.log('showNav', e);
-		DZ.addClass(navEl, 'show');
-		navShown = true;
-	}
-
-	function hideNav() {
-		DZ.removeClass(navEl, 'show');
-		navShown = false;
-	}
-
-	function onBodyClick(e) {
-		//console.log('bodyClick', e);
-		if(navShown && e.target.id !== 'nav-toggle') {
-			hideNav();
-		}
-
-		var hash = e.target.hash;
-		if(!hash) {
-			return;
-		}
-
-		e.preventDefault();
-		scrollPage(DZ.matchOne(hash));
-
-		if(window.history.pushState) {
-			window.history.pushState({'hash': hash}, hash, hash);
-		}
-	}
-
-	DZ.addEvent(document.documentElement, 'click touchend', onBodyClick);
-	DZ.addEvent(window, 'popstate', onPopState);
-	DZ.addEvent('#nav-toggle', 'click', showNav);
-
-	/*DZ.addEvent(DZ.match('textarea'), 'change keypress', function(){
-		DZ.removeClass(this, 'transit');
-		var oh = this.offsetHeight;
-		this.style.height = '';
-		var h = this.scrollHeight;
-		this.style.height = oh + 'px';
-		DZ.addClass(this, 'transit');
-		this.style.height = h + 'px';
-	});*/
-
-	DZ.match('.textbelt textarea').each(function(){
-		var textarea = this,
-			textbelt = this.parentNode,
-			oh = this.offsetHeight,
-			clone = (function(){
-				/*var props = ['height', 'width', 'lineHeight'],
-					propOb = {}, i = 0, l = props.length, prop;
-
-				for(; i<l; i++) {
-					prop = props[i];
-					propOb[prop] = window.getComputedStyle(textarea)[prop];
-				}*/
-
-				var clone = textarea.cloneNode();
-				clone.removeAttribute('name');
-				clone.removeAttribute('id');
-				DZ.addClass(clone, 'offscreen');
-				//clone.className = 'offscreen';
-				clone.setAttribute('tabIndex', '-1');
-				textbelt.parentNode.insertBefore(clone, textbelt);
-
-				return clone;
-			})(),
-			lastScrollHeight = null,
-			updateSize = function() {
-				textbelt.scrollTop = 0;
-				clone.style.height = '';
-				clone.value = textarea.value;
-				//clone.scrollHeight = 10000;
-
-				//var scrollHeight = Math.max(clone.scrollHeight, oh);
-				var scrollHeight = clone.scrollHeight - 3;
-
-				if(lastScrollHeight === scrollHeight) { return; }
-				lastScrollHeight = scrollHeight;
-
-				textbelt.style.height = scrollHeight + 'px';
-				clone.style.height = scrollHeight + 'px';
-			};
-
-		DZ.addEvent(textarea, 'keyup keydown change blur', updateSize);
-	});
-
-	function validate(form) {
-		var fields = DZ.match('.required', form),
-			errors = [];
-
-		fields.each(function(){
-			if(!this.value) {
-				return errors.push({
-					'field': this,
-					'msg': 'This field is required.'
-				});
-			}
-			if('email' === this.type && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value)) {
-				return errors.push({
-					'field': this,
-					'msg': 'Please enter a valid email address.'
-				});
-			}
-		});
-
-		return errors;
-	}
-
-	function liftError() {
-		if(!this.value) {return;}
-		if('email' === this.type && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value)) {return;}
-
-		var parent = this.parentNode;
-		if(DZ.hasClass(parent, 'textbelt')) {
-			parent = parent.parentNode;
-		}
-		DZ.removeClass(parent, 'error');
-	}
-
-	function serialize(data) {
-		var arr = [];
-		for (var prop in data) {
-			arr.push(prop + '=' + data[prop]);
-		}
-		return arr.join('&');
-	}
-
-	var loaderEl = DZ.getId('loader'),
-		errEl = DZ.getId('form-error'),
-		panEls = DZ.match('.pan'),
-		thanksEl = DZ.getId('thanks'),
-		draftEl = DZ.getId('draft'),
-		pEl = DZ.matchOne('p', thanksEl),
+		$formErr = $('#form-error'),
+		$pan = $('.pan'),
+		$thanks = $('#thanks'),
+		$draft = $('#draft'),
+		$thanksP = $('p', $thanks),
 		sentData = [],
-		revertText;
+		revertText,
 
-	function sendEmail(form) {
-		var self = this,
-			data = encodeURIComponent(JSON.stringify({
-				'name': form.name.value,
-				'email': form.email.value,
-				'subject': form.subject.value,
-				'message': form.message.value
-			})),
-			req = new XMLHttpRequest();
+		R = function() {
+			var self = this;
 
-		if(sentData.indexOf(data) > -1) {
-			return showThanks('I appreciate your enthusiasm to reach me, but the first email sent succesfully, there\'s no need for a duplicate. :)');
-		}
+			$.initMobileFixes();
+			$.setScrollOffset('header');
 
-		DZ.addClass(loaderEl, 'on');
-		//console.log(serialize(data));
+			$.bindAll(this, 'fixNav', 'onBodyClick', 'onPopState', 'showNav', 'onSubmit', 'liftError', 'showForm');
 
-		req.onreadystatechange = function(e) {
-			console.log('readyState:', req.readyState);
-			if(4 === req.readyState) {
-				//console.log('status:', req.status);
-				DZ.removeClass(loaderEl, 'on');
-				if(200 === req.status) {
-					sentData.push(data);
-					showThanks();
-				} else {
-					errEl.innerHTML = ['Sorry, there was an error with your submission. Please try again or send an email to: <a href="mailto:resume', 'davidzuch.me">resume', 'davidzuch.me</a>'].join('@');
-					DZ.removeClass(errEl, 'hide');
+			$.on(doc, 'DOMContentLoaded', this.fixNav);
+			$.on(win, 'load', this.fixNav);
+			$.on(doc.body, 'click touchend', this.onBodyClick);
+			$.on(win, 'popstate', this.onPopState);
+			$('#nav-toggle').on('click', this.showNav);
+			$('form').on('submit', this.onSubmit);
+			$('.required').on('keyup change blur', this.liftError);
+			$('#return').on('click', this.showForm);
 
-					var errH = errEl.offsetHeight;
-					errEl.style.height = '0';
-					setTimeout(function(){errEl.style.height = errH + 'px';}, 1);
-				}
-			}
+			this.fixHeaders();
+			this.initFlexText();
+
+			// preserving for callbacks with lost scope
+			this.$formErr = $formErr;
 		};
-		req.open('POST', '/send', true);
-		req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-		//req.setRequestHeader('Connection', 'close');
-		req.send('data=' + data);
-	}
 
-	function showThanks(msg) {
-		if(msg) {
-			revertText = pEl.innerHTML;
-			pEl.innerHTML = msg;
-		}
+	R.prototype = {
+		fixNav: function() {
+			var nav = $.matchId('toc'),
+				offset = nav.offsetTop,
+				height = nav.scrollHeight,
+				stickyCSS = $.newStyle('body.sticky, html.sticky body { padding-top: ' + height + 'px; }'),
 
-		panEls.each(function() {
-			this.style.left = '-100%';
-		});
-		panEls[0].style.height = draftEl.offsetHeight + 'px';
-		setTimeout(function(){panEls[0].style.height = thanksEl.offsetHeight + 'px';}, 1);
-	}
+				onScroll = function(e) {
+					var scroll = scrollEl.scrollTop;
+					if (scroll >= offset) {
+						$.addClass(scrollEl, 'sticky');
+					} else {
+						$.removeClass(scrollEl, 'sticky');
+					}
+				};
 
-	function showForm() {
-		panEls.each(function() {
-			this.style.left = '0';
-		});
-		panEls[0].style.height = thanksEl.offsetHeight + 'px';
-		setTimeout(function(){panEls[0].style.height = draftEl.offsetHeight + 'px';}, 1);
+			$.on(doc, 'scroll', onScroll);
+		},
 
-		if(revertText) {
-			setTimeout(function() {
-				pEl.innerHTML = revertText;
-				revertText = '';
-			}, 500);
-		}
-	}
+		showNav: function() {
+			$navBelt.addClass('show');
+			navShown = true;
+		},
 
-	function onSubmit(e) {
-		e.preventDefault();
-		var form = this,
-			errors = validate(form);
+		hideNav: function() {
+			$navBelt.removeClass('show');
+			navShown = false;
+		},
 
-		DZ.removeClass(DZ.match('.error', form), 'error');
+		onBodyClick: function(e) {
+			if (navShown && 'nav-toggle' !== e.target.id) {
+				this.hideNav();
+			}
 
-		DZ.addClass(errEl, 'hide');
-		errEl.innerHTML = '';
-		errEl.style.height = '';
+			var hash = e.target.hash;
+			if (!hash) { return; }
 
-		if(errors.length) {
-			errors.each(function(){
-				DZ.addClass(this.field.parentNode, 'error');
+			e.preventDefault();
+			$(hash).scrollPage();
+
+			if (win.history.pushState) {
+				win.history.pushState({'hash': hash}, hash, hash);
+			}
+		},
+
+		onPopState: function(e, data) {
+			e.preventDefault();
+			var hash = win.location.hash;
+
+			if (hash) {
+				$(hash).scrollPage();
+			} else {
+				$.scrollPage(0);
+			}
+		},
+
+		fixHeaders: function() {
+			$('h2, h3').each(function() {
+				this.innerHTML = this.innerHTML.replace(/(.)$/, '<span class="last-letter">$1</span>');
 			});
-			errors[0].field.focus();
-		} else {
-			sendEmail(form);
+		},
+
+		initFlexText: function() {
+			$('.textbelt textarea').each(function() {
+				var textarea = this,
+					textbelt = this.parentNode,
+					clone = (function() {
+						var clone = textarea.cloneNode(),
+							$clone = $(clone);
+
+						$clone.attr({
+							'name': '',
+							'id': '',
+							'tabIndex': '-1'
+						});
+						$clone.addClass('offscreen');
+						textbelt.parentNode.insertBefore(clone, textbelt);
+
+						return clone;
+					})(),
+					lastScrollHeight = null,
+					updateSize = function() {
+						textbelt.scrollTop = 0;
+						clone.style.height = '';
+						clone.value = textarea.value;
+
+						var scrollHeight = clone.scrollHeight - 3;
+
+						if (lastScrollHeight === scrollHeight) { return; }
+						lastScrollHeight = scrollHeight;
+
+						textbelt.style.height = scrollHeight + 'px';
+						clone.style.height = scrollHeight + 'px';
+					};
+
+				$.on(textarea, 'keyup keydown change blur', updateSize);
+			});
+		},
+
+		validate: function(form) {
+			var $fields = $('.required', form),
+				errors = [];
+
+			$fields.each(function() {
+				if (!this.value) {
+					return errors.push({
+						'field': this,
+						'msg': 'This field is required.'
+					});
+				}
+				if ('email' === this.type && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value)) {
+					return errors.push({
+						'field': this,
+						'msg': 'Please enter a valid email address.'
+					});
+				}
+			});
+
+			return errors;
+		},
+
+		liftError: function(e) {
+			var field = e.target;
+			if (!field.value || ('email' === field.type && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value))) { return; }
+
+			var parent = field.parentNode;
+			if ($.hasClass(parent, 'textbelt')) {
+				parent = parent.parentNode;
+			}
+			$.removeClass(parent, 'error');
+		},
+
+		sendEmail: function(form) {
+			var self = this,
+				data = encodeURIComponent(JSON.stringify({
+					'name': form.name.value,
+					'email': form.email.value,
+					'subject': form.subject.value,
+					'message': form.message.value
+				})),
+				req = new XMLHttpRequest(),
+				$loader = $('#loader');
+
+			if (sentData.indexOf(data) > -1) {
+				return this.showThanks('I appreciate your enthusiasm to reach me, but the first email sent succesfully, there\'s no need for a duplicate. :)');
+			}
+
+			$loader.addClass('on');
+
+			req.onreadystatechange = function(e) {
+				if (4 === req.readyState) {
+					$loader.removeClass('on');
+					if (200 === req.status) {
+						sentData.push(data);
+						self.showThanks();
+					} else {
+						$formErr
+							.html(['Sorry, there was an error with your submission. Please try again or send an email to: <a href="mailto:resume', 'davidzuch.me">resume', 'davidzuch.me</a>'].join('@'))
+							.removeClass('hide');
+
+						var height = $formErr.prop('offsetHeight');
+						$formErr.style('height', '0');
+						setTimeout(function() {
+							$formErr.style('height', height + 'px');
+						}, 1);
+					}
+				}
+			};
+			req.open('POST', '/send', true);
+			req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+			req.send('data=' + data);
+		},
+
+		showThanks: function(msg) {
+			if (msg) {
+				revertText = $thanksP.html();
+				$thanksP.html(msg);
+			}
+
+			$pan.style('left', '-100%');
+			$pan[0].style.height = $draft.prop('offsetHeight') + 'px';
+			setTimeout(function() {
+				$pan[0].style.height = $thanks.prop('offsetHeight') + 'px';
+			}, 1);
+		},
+
+		showForm: function() {
+			$pan.style('left', '0');
+			$pan[0].style.height = $thanks.prop('offsetHeight') + 'px';
+			setTimeout(function() {
+				$pan[0].style.height = $draft.prop('offsetHeight') + 'px';
+			}, 1);
+			setTimeout(function() {
+				$pan[0].style.height = '';
+			}, 500);
+
+			if (revertText) {
+				setTimeout(function() {
+					$thanksP.html(revertText);
+					revertText = '';
+				}, 500);
+			}
+		},
+
+		onSubmit: function(e) {
+			console.log($, $formErr);
+			e.preventDefault();
+			var form = e.target,
+				errors = this.validate(form);
+
+			$('.error', form).removeClass('error');
+			$formErr.addClass('hide').html('').style('height', '');
+
+			if (errors.length) {
+				$.each(errors, function() {
+					$.addClass(this.field.parentNode, 'error');
+				});
+				errors[0].field.focus();
+			} else {
+				this.sendEmail(form);
+			}
 		}
-	}
+	};
 
-	DZ.addEvent('form', 'submit', onSubmit);
-	DZ.addEvent('.required', 'keyup change blur', liftError);
-	DZ.addEvent('#return', 'click', showForm);
-
-	DZ.match('h2, h3').each(function(){
-		this.innerHTML = this.innerHTML.replace(/(.)$/, '<span class="last-letter">$1</span>');
-	});
+	new R();
 })();
