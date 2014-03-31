@@ -1,14 +1,16 @@
 // Use Compass ('cause it rocks!)
 @import "compass";
 
+$bg-color: #fefdef;
+
 // Links
 $link-color: #43B8F2;
 $visited-color: #53A8F2;
 $hover-color: #196895;
 
 // Links
-$alt-link-color: #FFF;
-$alt-visited-color: #FFF;
+$alt-link-color: $bg-color;
+$alt-visited-color: $bg-color;
 $alt-hover-color: rgba(255, 255, 255, .9);
 
 // Other colors

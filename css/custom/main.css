@@ -264,12 +264,12 @@ div.div.end {
 
 ::-moz-selection {
   background: #222;
-  color: #fff;
+  color: #fefdef;
 }
 
 ::selection {
   background: #222;
-  color: #fff;
+  color: #fefdef;
 }
 
 /* =============================================================================
@@ -433,7 +433,7 @@ header div.belt {
   }
 }
 header hgroup {
-  background: #fff;
+  background: #fefdef;
   padding: 1em 0;
   margin: 0 auto;
   max-width: 18.5em;
@@ -460,7 +460,7 @@ header h2 {
 }
 header nav {
   position: relative;
-  color: #fff;
+  color: #fefdef;
   background-color: #000;
   background-position: 50% 0;
   z-index: 99;
@@ -543,13 +543,13 @@ header nav h3:before, header nav .btn-belt button:before, .btn-belt header nav b
   width: .75em;
   height: .75em;
   /*height: 0.1em;
-  border-top: 0.375em double #fff;
-  border-bottom: 0.125em solid #fff;*/
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(20%, #ffffff), color-stop(20%, transparent), color-stop(40%, transparent), color-stop(40%, #ffffff), color-stop(60%, #ffffff), color-stop(60%, transparent), color-stop(80%, transparent), color-stop(80%, #ffffff), color-stop(100%, #ffffff));
-  background: -webkit-linear-gradient(top, #ffffff, #ffffff 20%, transparent 20%, transparent 40%, #ffffff 40%, #ffffff 60%, transparent 60%, transparent 80%, #ffffff 80%, #ffffff 100%);
-  background: -moz-linear-gradient(top, #ffffff, #ffffff 20%, transparent 20%, transparent 40%, #ffffff 40%, #ffffff 60%, transparent 60%, transparent 80%, #ffffff 80%, #ffffff 100%);
-  background: -o-linear-gradient(top, #ffffff, #ffffff 20%, transparent 20%, transparent 40%, #ffffff 40%, #ffffff 60%, transparent 60%, transparent 80%, #ffffff 80%, #ffffff 100%);
-  background: linear-gradient(top, #ffffff, #ffffff 20%, transparent 20%, transparent 40%, #ffffff 40%, #ffffff 60%, transparent 60%, transparent 80%, #ffffff 80%, #ffffff 100%);
+  border-top: 0.375em double $bg-color;
+  border-bottom: 0.125em solid $bg-color;*/
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fefdef), color-stop(20%, #fefdef), color-stop(20%, transparent), color-stop(40%, transparent), color-stop(40%, #fefdef), color-stop(60%, #fefdef), color-stop(60%, transparent), color-stop(80%, transparent), color-stop(80%, #fefdef), color-stop(100%, #fefdef));
+  background: -webkit-linear-gradient(top, #fefdef, #fefdef 20%, transparent 20%, transparent 40%, #fefdef 40%, #fefdef 60%, transparent 60%, transparent 80%, #fefdef 80%, #fefdef 100%);
+  background: -moz-linear-gradient(top, #fefdef, #fefdef 20%, transparent 20%, transparent 40%, #fefdef 40%, #fefdef 60%, transparent 60%, transparent 80%, #fefdef 80%, #fefdef 100%);
+  background: -o-linear-gradient(top, #fefdef, #fefdef 20%, transparent 20%, transparent 40%, #fefdef 40%, #fefdef 60%, transparent 60%, transparent 80%, #fefdef 80%, #fefdef 100%);
+  background: linear-gradient(top, #fefdef, #fefdef 20%, transparent 20%, transparent 40%, #fefdef 40%, #fefdef 60%, transparent 60%, transparent 80%, #fefdef 80%, #fefdef 100%);
 }
 .sticky header nav, .touch header nav {
   position: fixed;
@@ -657,11 +657,11 @@ header nav ul {
   }
 }
 header nav a {
-  color: white;
+  color: #fefdef;
   padding: .85em;
 }
 header nav a:visited {
-  color: white;
+  color: #fefdef;
 }
 header nav a:hover {
   color: rgba(255, 255, 255, 0.9);
@@ -714,7 +714,7 @@ header nav a:hover {
   }
 }
 #main > section {
-  background: #fff;
+  background: #fefdef;
   margin: 0 0 3em;
   position: relative;
   overflow: hidden;
@@ -798,8 +798,8 @@ header nav a:hover {
   }
 }
 #main h3, #main .btn-belt button, .btn-belt #main button {
-  color: #fff;
-  -webkit-text-fill-color: #fff;
+  color: #fefdef;
+  -webkit-text-fill-color: #fefdef;
   text-shadow: 0 0 1px black;
 }
 #main h3::before, #main .btn-belt button::before, .btn-belt #main button::before {
@@ -859,8 +859,8 @@ header nav a:hover {
   	//@include border(bottom, 0);
   	//height:0;
   	//border: .95em solid transparent;
-  	//border-left: .5em solid #fff;
-  	//border-right: .5em solid #fff;
+  	//border-left: .5em solid $bg-color;
+  	//border-right: .5em solid $bg-color;
   	//bottom: -1.8em;
   	//@include box-sizing(border-box);
   	@include border(bottom, 2em);
@@ -1307,7 +1307,7 @@ header nav a:hover {
 	@include bg();
 	width: 0;
 	height: 0;
-	border:30px solid #fff;
+	border:30px solid $bg-color;
 	border-bottom-color: transparent;
 	border-top: 0;
 	top: -5px;
@@ -1319,7 +1319,7 @@ header nav a:hover {
 	@include bg();
 	width: 0;
 	height: 0;
-	border:30px solid #fff;
+	border:30px solid $bg-color;
 	border-top-color: transparent;
 	border-bottom: 0;
 	bottom: 2em;
@@ -1340,7 +1340,7 @@ ul.ornate::after {
   display: block;
   position: relative;
   padding: .5em 0;
-  background: #fff;
+  background: #fefdef;
 }
 .row label::before {
   position: absolute;
@@ -1397,6 +1397,7 @@ ul.ornate::after {
   display: block;
   overflow: hidden;
   resize: none;
+  background: #fefdef;
 }
 .row input.offscreen, .row textarea.offscreen {
   -webkit-transition: none;
