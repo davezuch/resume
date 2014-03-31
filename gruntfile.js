@@ -73,7 +73,7 @@ module.exports = function(grunt) {
         sourceMap: true
       },
       dist: {
-        src: ['js/libs/z.scripts.concat.js'],
+        src: ['js/libs/**/*.js'],
         dest: 'js/min/scripts.min.js'
       }
     },
