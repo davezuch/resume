@@ -264,12 +264,12 @@ div.div.end {
 
 ::-moz-selection {
   background: #222;
-  color: #fefdef;
+  color: #fffdf2;
 }
 
 ::selection {
   background: #222;
-  color: #fefdef;
+  color: #fffdf2;
 }
 
 /* =============================================================================
@@ -433,7 +433,7 @@ header div.belt {
   }
 }
 header hgroup {
-  background: #fefdef;
+  background: #fffdf2;
   padding: 1em 0;
   margin: 0 auto;
   max-width: 18.5em;
@@ -460,7 +460,7 @@ header h2 {
 }
 header nav {
   position: relative;
-  color: #fefdef;
+  color: #fffdf2;
   background-color: #000;
   background-position: 50% 0;
   z-index: 99;
@@ -545,11 +545,11 @@ header nav h3:before, header nav .btn-belt button:before, .btn-belt header nav b
   /*height: 0.1em;
   border-top: 0.375em double $bg-color;
   border-bottom: 0.125em solid $bg-color;*/
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fefdef), color-stop(20%, #fefdef), color-stop(20%, transparent), color-stop(40%, transparent), color-stop(40%, #fefdef), color-stop(60%, #fefdef), color-stop(60%, transparent), color-stop(80%, transparent), color-stop(80%, #fefdef), color-stop(100%, #fefdef));
-  background: -webkit-linear-gradient(top, #fefdef, #fefdef 20%, transparent 20%, transparent 40%, #fefdef 40%, #fefdef 60%, transparent 60%, transparent 80%, #fefdef 80%, #fefdef 100%);
-  background: -moz-linear-gradient(top, #fefdef, #fefdef 20%, transparent 20%, transparent 40%, #fefdef 40%, #fefdef 60%, transparent 60%, transparent 80%, #fefdef 80%, #fefdef 100%);
-  background: -o-linear-gradient(top, #fefdef, #fefdef 20%, transparent 20%, transparent 40%, #fefdef 40%, #fefdef 60%, transparent 60%, transparent 80%, #fefdef 80%, #fefdef 100%);
-  background: linear-gradient(top, #fefdef, #fefdef 20%, transparent 20%, transparent 40%, #fefdef 40%, #fefdef 60%, transparent 60%, transparent 80%, #fefdef 80%, #fefdef 100%);
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #fffdf2), color-stop(20%, #fffdf2), color-stop(20%, transparent), color-stop(40%, transparent), color-stop(40%, #fffdf2), color-stop(60%, #fffdf2), color-stop(60%, transparent), color-stop(80%, transparent), color-stop(80%, #fffdf2), color-stop(100%, #fffdf2));
+  background: -webkit-linear-gradient(top, #fffdf2, #fffdf2 20%, transparent 20%, transparent 40%, #fffdf2 40%, #fffdf2 60%, transparent 60%, transparent 80%, #fffdf2 80%, #fffdf2 100%);
+  background: -moz-linear-gradient(top, #fffdf2, #fffdf2 20%, transparent 20%, transparent 40%, #fffdf2 40%, #fffdf2 60%, transparent 60%, transparent 80%, #fffdf2 80%, #fffdf2 100%);
+  background: -o-linear-gradient(top, #fffdf2, #fffdf2 20%, transparent 20%, transparent 40%, #fffdf2 40%, #fffdf2 60%, transparent 60%, transparent 80%, #fffdf2 80%, #fffdf2 100%);
+  background: linear-gradient(top, #fffdf2, #fffdf2 20%, transparent 20%, transparent 40%, #fffdf2 40%, #fffdf2 60%, transparent 60%, transparent 80%, #fffdf2 80%, #fffdf2 100%);
 }
 .sticky header nav, .touch header nav {
   position: fixed;
@@ -657,11 +657,11 @@ header nav ul {
   }
 }
 header nav a {
-  color: #fefdef;
+  color: #fffdf2;
   padding: .85em;
 }
 header nav a:visited {
-  color: #fefdef;
+  color: #fffdf2;
 }
 header nav a:hover {
   color: rgba(255, 255, 255, 0.9);
@@ -714,7 +714,7 @@ header nav a:hover {
   }
 }
 #main > section {
-  background: #fefdef;
+  background: #fffdf2;
   margin: 0 0 3em;
   position: relative;
   overflow: hidden;
@@ -798,8 +798,8 @@ header nav a:hover {
   }
 }
 #main h3, #main .btn-belt button, .btn-belt #main button {
-  color: #fefdef;
-  -webkit-text-fill-color: #fefdef;
+  color: #fffdf2;
+  -webkit-text-fill-color: #fffdf2;
   text-shadow: 0 0 1px black;
 }
 #main h3::before, #main .btn-belt button::before, .btn-belt #main button::before {
@@ -1340,7 +1340,7 @@ ul.ornate::after {
   display: block;
   position: relative;
   padding: .5em 0;
-  background: #fefdef;
+  background: #fffdf2;
 }
 .row label::before {
   position: absolute;
@@ -1397,7 +1397,7 @@ ul.ornate::after {
   display: block;
   overflow: hidden;
   resize: none;
-  background: #fefdef;
+  background: #fffdf2;
 }
 .row input.offscreen, .row textarea.offscreen {
   -webkit-transition: none;
