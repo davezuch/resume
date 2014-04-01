@@ -28,6 +28,8 @@ Modernizr.addTest('backgroundclip',function() {
 
 		$navBelt = $('#nav-belt'),
 		navShown = false,
+		sticky = false,
+		stickyHeight = 0,
 
 		$formErr = $('#form-error'),
 		$pan = $('.pan'),
@@ -41,7 +43,9 @@ Modernizr.addTest('backgroundclip',function() {
 			var self = this;
 
 			$.initMobileFixes();
-			$.setScrollOffset('header');
+			$.setScrollOffset(function(){
+				return $('header').prop('offsetHeight') - stickyHeight;
+			});
 
 			$.bindAll(this, 'fixNav', 'onBodyClick', 'onPopState', 'showNav', 'onSubmit', 'liftError', 'showForm');
 
@@ -71,17 +75,21 @@ Modernizr.addTest('backgroundclip',function() {
 		fixNav: function() {
 			var nav = $.matchId('toc'),
 				offset = nav.offsetTop,
-				height = nav.scrollHeight,
-				stickyCSS = $.newStyle('body.sticky, html.sticky body { padding-top: ' + height + 'px; }'),
+				stickyCSS,
 
 				onScroll = function(e) {
 					var scroll = scrollEl.scrollTop;
 					if (scroll >= offset) {
+						sticky = true;
 						$.addClass(scrollEl, 'sticky');
 					} else {
+						sticky = false;
 						$.removeClass(scrollEl, 'sticky');
 					}
 				};
+
+			stickyHeight = nav.scrollHeight;
+			stickyCSS = $.newStyle('body.sticky, html.sticky body { padding-top: ' + stickyHeight + 'px; }');
 
 			$.on(doc, 'scroll', onScroll);
 		},
