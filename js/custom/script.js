@@ -117,12 +117,16 @@ Modernizr.addTest('backgroundclip',function() {
 			}
 
 			var hash = e.target.hash;
-			if (!hash) { return; }
+			if (!hash) {
+				if ('#' === e.target.getAttribute('href')) {
+					hash = 0;
+				} else { return; }
+			}
 
 			e.preventDefault();
-			$(hash).scrollPage();
+			$.scrollPage(hash);
 
-			if (win.history.pushState) {
+			if (hash && win.history.pushState) {
 				win.history.pushState({'hash': hash}, hash, hash);
 			}
 		},
