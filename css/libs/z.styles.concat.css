@@ -1204,14 +1204,18 @@ h1, h2 {
 }
 @media only screen and (min-width: 513px) {
   #wrapper {
-    padding: 0 0 2.5em;
     max-width: 25em;
+  }
+  .no-touch #wrapper {
+    padding: 0 0 2.5em;
   }
 }
 @media only screen and (min-width: 751px) {
   #wrapper {
-    padding: 0 0 7em;
     max-width: 33em;
+  }
+  .no-touch #wrapper {
+    padding: 0 0 7em;
   }
 }
 
@@ -2306,14 +2310,15 @@ footer {
 }
 @media only screen and (min-width: 513px) {
   footer {
-    padding: 1.5em 0;
     max-width: 25em;
+  }
+  .no-touch footer {
+    padding: 0 0 1.5em;
   }
 }
 @media only screen and (min-width: 751px) {
   footer {
     line-height: 1em;
-    padding: 2.5em 0;
     max-width: 33em;
   }
   .no-touch footer {
@@ -2321,6 +2326,7 @@ footer {
     bottom: 0;
     width: 100%;
     z-index: 0;
+    padding: 0 0 2.5em;
   }
 }
 footer a, footer a:visited {
