@@ -52,7 +52,7 @@ module.exports = function(grunt) {
       cssmin: {
         src: ['css/min/*.css'],
         dest: 'css/min/styles.min.css'
-      },
+      }/*,
 
       js: {
         src: ['<%= files.js %>'],
@@ -65,7 +65,7 @@ module.exports = function(grunt) {
       jsmin: {
         src: ['js/min/*.js'],
         dest: 'js/min/scripts.min.js'
-      }
+      }*/
     },
 
     uglify: {
@@ -73,7 +73,7 @@ module.exports = function(grunt) {
         sourceMap: true
       },
       dist: {
-        src: ['js/bower/**/*.js', 'js/libs/z.scripts.concat.js'],
+        src: ['js/bower/**/*.js', 'js/custom/*.js'/*, 'js/libs/z.scripts.concat.js'*/],
         dest: 'js/min/scripts.min.js'
       }
     },
@@ -193,10 +193,10 @@ module.exports = function(grunt) {
   // grunt.registerTask('default', 'lint concat:js concat:jslibs min concat:jsmin   csslint concat:css concat:csslibs cssmin concat:cssmin');
   grunt.registerTask('default', [
                       'jshint',
-                      'concat:js',
-                      'concat:jslibs',
+                      //'concat:js',
+                      //'concat:jslibs',
                       'uglify',
-                      'concat:jsmin',
+                      //'concat:jsmin',
                       'compass',
                       //'csslint',
                       'concat:css',
