@@ -72,7 +72,7 @@ h1, h2 {
 		max-width: $max-width-x2;
 	}
 	@include respond(x3) {
-		padding: 0 0 5em;
+		padding: 0 0 7em;
 		max-width: $max-width-x3;
 	}
 }
@@ -735,9 +735,27 @@ footer {
 	}
 
 	a, a:visited {
+		color: rgba(255,255,255,.6);
+	}
+	a:hover {
 		color: rgba(255,255,255,.75);
-		font-weight: bold;
-		text-transform: uppercase;
+	}
+
+	ul {
+		padding-left: 0;
+	}
+
+	li {
+		display: inline;
+		padding: 0 10px;
+
+		&:before {
+			content: '/';
+		}
+
+		&:first-child:before {
+			display: none;
+		}
 	}
 }
 

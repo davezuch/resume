@@ -188,10 +188,16 @@ form {
 	text-align: left;
 }
 
-footer p {
-	font-size: 14px;
-	font-size: 1.4rem;
-	letter-spacing: .1em;
+footer {
+	p, ul {
+		font-size: 14px;
+		font-size: 1.4rem;
+		letter-spacing: .1em;
+	}
+
+	a {
+		font-weight: bold;
+	}
 
 	strong {
 		text-transform: uppercase;
