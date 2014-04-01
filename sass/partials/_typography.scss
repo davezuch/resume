@@ -38,7 +38,7 @@ body {
 	font-size: $base-font-size;
 	text-align: center;
 	font-size-adjust: auto;
-	@include hyphenation;
+	//@include hyphenation;
 	@include respond(x2) {
 		font-size: $base-font-size-x2;
 	}
