@@ -44,7 +44,7 @@ Modernizr.addTest('backgroundclip',function() {
 
 			$.initMobileFixes();
 			$.setScrollOffset(function(){
-				return $('header').prop('offsetHeight') - stickyHeight;
+				return $('header').prop('offsetHeight') - (sticky ? stickyHeight : 0);
 			});
 
 			$.bindAll(this, 'fixNav', 'onBodyClick', 'onPopState', 'showNav', 'onSubmit', 'liftError', 'showForm');
