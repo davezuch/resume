@@ -69,6 +69,13 @@ Modernizr.addTest('backgroundclip',function() {
 					$('html').style('margin-top', '');
 				}
 			}, 500);
+
+			// force repaint to fix FOUC issue
+			setTimeout(function(){
+				scrollEl.style.display='none';
+				scrollEl.offsetHeight;
+				scrollEl.style.display='';
+			}, 1);
 		};
 
 	R.prototype = {
