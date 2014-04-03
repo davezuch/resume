@@ -96,7 +96,7 @@ Modernizr.addTest('backgroundclip',function() {
 				};
 
 			stickyHeight = nav.scrollHeight;
-			stickyCSS = $.newStyle('body.sticky, html.sticky body { padding-top: ' + stickyHeight + 'px; }');
+			stickyCSS = $.newStyle('body.sticky, html.sticky body, html.touch body { padding-top: ' + stickyHeight + 'px; }');
 
 			$.on(doc, 'scroll', onScroll);
 		},

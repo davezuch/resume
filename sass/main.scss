@@ -340,7 +340,7 @@ header {
 
 	p, ul, .content {
 		margin: 0 $copy-margin;
-		padding: 0 0 1em;
+		padding: 0;
 		list-style: none;
 		position: relative;
 		max-width: $copy-width;
@@ -360,8 +360,12 @@ header {
 		}
 	}
 
-	p:first-child {
-		padding: 1em 0;
+	p {
+		padding: 0 0 1em;
+
+		&:first-child {
+			padding: 1em 0;
+		}
 	}
 
 	form {

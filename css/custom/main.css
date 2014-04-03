@@ -808,7 +808,7 @@ header nav a:hover {
 }
 #main p, #main ul, #main .content {
   margin: 0 1.5em;
-  padding: 0 0 1em;
+  padding: 0;
   list-style: none;
   position: relative;
   max-width: 15.5em;
@@ -827,6 +827,9 @@ header nav a:hover {
 }
 #main p p, #main ul p, #main .content p {
   margin: 0;
+}
+#main p {
+  padding: 0 0 1em;
 }
 #main p:first-child {
   padding: 1em 0;
