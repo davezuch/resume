@@ -56,7 +56,7 @@ body {
   text-align: center;
   font-size-adjust: auto;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   body {
     font-size: 24px;
   }
@@ -84,13 +84,13 @@ h1 {
   font-size: 9rem;
   line-height: 1;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   h1 {
     font-size: 126px;
     font-size: 12.6rem;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   h1 {
     font-size: 217.5px;
     font-size: 21.75rem;
@@ -108,14 +108,14 @@ h2 {
   letter-spacing: .03em;
   line-height: 1;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   h2 {
     font-size: 45px;
     font-size: 4.5rem;
     letter-spacing: .14em;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   h2 {
     font-size: 74px;
     font-size: 7.4rem;
@@ -129,13 +129,13 @@ h3, .btn-belt button {
   font-weight: 400;
   line-height: 1;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   h3, .btn-belt button {
     font-size: 34px;
     font-size: 3.4rem;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   h3, .btn-belt button {
     font-size: 51px;
     font-size: 5.1rem;
@@ -165,14 +165,14 @@ header h2 {
   font-size: 2rem;
   letter-spacing: 0;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   header h2 {
     font-size: 23px;
     font-size: 2.3rem;
     letter-spacing: 2px;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   header h2 {
     font-size: 43px;
     font-size: 4.3rem;
@@ -237,7 +237,7 @@ div.div {
   font-size: 104px;
   line-height: 0.5;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   div.div {
     font-size: 114px;
   }
@@ -245,7 +245,7 @@ div.div {
 div.div.end {
   font-size: 79px;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   div.div.end {
     font-size: 89px;
   }
@@ -286,12 +286,12 @@ body {
   background-color: #000;
   background-position: 50% 0;
 }
-@media only screen and (max-width: 512px) {
+@media all and (max-width: 512px) {
   body {
     background-image: url(/img/bg.jpg) ;
   }
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .touch body {
     background-image: url(/img/bg.jpg) ;
   }
@@ -300,19 +300,19 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .no-touch body {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   body {
     background-attachment: fixed;
   }
 }
 
 a {
-  color: #43b8f2;
+  color: #327896;
   -webkit-transition: all 0.1s ease;
   -moz-transition: all 0.1s ease;
   -o-transition: all 0.1s ease;
@@ -320,7 +320,7 @@ a {
   /* &:focus { outline: thin dotted; } */
 }
 a:visited {
-  color: #53a8f2;
+  color: #327896;
 }
 a:hover {
   color: #196895;
@@ -352,13 +352,13 @@ h1, h2 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-@media only screen and (max-width: 512px) {
+@media all and (max-width: 512px) {
   .backgroundclip h1, .backgroundclip h2 {
     background-image: -webkit-linear-gradient(transparent, transparent), url(/img/bg.jpg);
     background-image: -o-linear-gradient(transparent, transparent);
   }
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .backgroundclip h1, .backgroundclip h2 {
     background-image: -webkit-linear-gradient(transparent, transparent), url(/img/bg.x2.jpg);
     background-image: -o-linear-gradient(transparent, transparent);
@@ -392,7 +392,7 @@ h1, h2 {
   position: relative;
   max-width: 18.5em;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   #wrapper {
     max-width: 25em;
   }
@@ -400,7 +400,7 @@ h1, h2 {
     padding: 0 0 2.5em;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   #wrapper {
     max-width: 33em;
   }
@@ -409,7 +409,7 @@ h1, h2 {
   }
 }
 
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   .no-touch header {
     padding-top: 344px;
   }
@@ -417,12 +417,12 @@ h1, h2 {
 header div.belt {
   max-width: 18.5em;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   header div.belt {
     max-width: 25em;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   header div.belt {
     max-width: 33em;
   }
@@ -439,13 +439,13 @@ header hgroup {
   margin: 0 auto;
   max-width: 18.5em;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   header hgroup {
     padding: 1.5em 0;
     max-width: 25em;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   header hgroup {
     max-width: 33em;
   }
@@ -454,7 +454,7 @@ header h2 {
   padding: .25em 0;
   -webkit-text-fill-color: rgba(0, 0, 0, 0.25);
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   header h2 {
     padding-top: 0;
   }
@@ -502,12 +502,12 @@ header nav {
   	opacity: .25;
   }*/
 }
-@media only screen and (max-width: 512px) {
+@media all and (max-width: 512px) {
   header nav {
     background-image: url(/img/bg.jpg) ;
   }
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .touch header nav {
     background-image: url(/img/bg.jpg) ;
   }
@@ -516,12 +516,12 @@ header nav {
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .no-touch header nav {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   header nav {
     background-attachment: fixed;
   }
@@ -531,7 +531,7 @@ header nav h3, header nav .btn-belt button, .btn-belt header nav button {
   text-align: left;
   line-height: 1.75em;
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   header nav h3, header nav .btn-belt button, .btn-belt header nav button {
     display: none;
   }
@@ -558,12 +558,12 @@ header nav h3:before, header nav .btn-belt button:before, .btn-belt header nav b
   width: 100%;
   max-width: 18.5em;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .sticky header nav, .touch header nav {
     max-width: 25em;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   .sticky header nav, .touch header nav {
     max-width: 33em;
   }
@@ -581,7 +581,7 @@ header nav .nav-belt {
   -o-transition: left 0.5s;
   transition: left 0.5s;
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   header nav .nav-belt {
     position: relative;
     left: 0;
@@ -608,12 +608,12 @@ header nav .nav-belt::before {
   z-index: -1;
   opacity: .65;
 }
-@media only screen and (max-width: 512px) {
+@media all and (max-width: 512px) {
   header nav .nav-belt::before {
     background-image: url(/img/bg.jpg) ;
   }
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .touch header nav .nav-belt::before {
     background-image: url(/img/bg.jpg) ;
   }
@@ -622,17 +622,17 @@ header nav .nav-belt::before {
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .no-touch header nav .nav-belt::before {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   header nav .nav-belt::before {
     background-attachment: fixed;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   header nav .nav-belt::before {
     display: none;
   }
@@ -643,7 +643,7 @@ header nav ul {
   position: absolute;
   top: 50%;
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   header nav ul {
     margin: 0;
     position: relative;
@@ -652,7 +652,7 @@ header nav ul {
     display: table;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   header nav li {
     display: table-cell;
   }
@@ -667,7 +667,7 @@ header nav a:visited {
 header nav a:hover {
   color: rgba(255, 255, 255, 0.9);
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   header nav a {
     padding: 1em;
   }
@@ -690,12 +690,12 @@ header nav a:hover {
   }
   */
 }
-@media only screen and (max-width: 512px) {
+@media all and (max-width: 512px) {
   #main {
     background-image: url(/img/bg.jpg) ;
   }
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .touch #main {
     background-image: url(/img/bg.jpg) ;
   }
@@ -704,12 +704,12 @@ header nav a:hover {
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .no-touch #main {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   #main {
     background-attachment: fixed;
   }
@@ -738,12 +738,12 @@ header nav a:hover {
   opacity: .33;
   z-index: -1;
 }
-@media only screen and (max-width: 512px) {
+@media all and (max-width: 512px) {
   #main h2::before, #main h3::before, #main .btn-belt button::before, .btn-belt #main button::before {
     background-image: url(/img/bg.jpg) ;
   }
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .touch #main h2::before, .touch #main h3::before, .touch #main .btn-belt button::before, .btn-belt .touch #main button::before {
     background-image: url(/img/bg.jpg) ;
   }
@@ -752,12 +752,12 @@ header nav a:hover {
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .no-touch #main h2::before, .no-touch #main h3::before, .no-touch #main .btn-belt button::before, .btn-belt .no-touch #main button::before {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   #main h2::before, #main h3::before, #main .btn-belt button::before, .btn-belt #main button::before {
     background-attachment: fixed;
   }
@@ -774,12 +774,12 @@ header nav a:hover {
   background-position: 50% 0;
   z-index: 2;
 }
-@media only screen and (max-width: 512px) {
+@media all and (max-width: 512px) {
   #main h2::after, #main h3::after, #main .btn-belt button::after, .btn-belt #main button::after {
     background-image: url(/img/bg.jpg) ;
   }
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .touch #main h2::after, .touch #main h3::after, .touch #main .btn-belt button::after, .btn-belt .touch #main button::after {
     background-image: url(/img/bg.jpg) ;
   }
@@ -788,12 +788,12 @@ header nav a:hover {
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .no-touch #main h2::after, .no-touch #main h3::after, .no-touch #main .btn-belt button::after, .btn-belt .no-touch #main button::after {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   #main h2::after, #main h3::after, #main .btn-belt button::after, .btn-belt #main button::after {
     background-attachment: fixed;
   }
@@ -813,13 +813,13 @@ header nav a:hover {
   position: relative;
   max-width: 15.5em;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   #main p, #main ul, #main .content {
     max-width: 20em;
     margin: 0 2.5em;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   #main p, #main ul, #main .content {
     max-width: 28em;
     margin: 0 2.5em;
@@ -880,12 +880,12 @@ header nav a:hover {
   background-color: #000;
   background-position: 50% 0;
 }
-@media only screen and (max-width: 512px) {
+@media all and (max-width: 512px) {
   #main li ul::before {
     background-image: url(/img/bg.jpg) ;
   }
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .touch #main li ul::before {
     background-image: url(/img/bg.jpg) ;
   }
@@ -894,12 +894,12 @@ header nav a:hover {
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .no-touch #main li ul::before {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   #main li ul::before {
     background-attachment: fixed;
   }
@@ -919,12 +919,12 @@ header nav a:hover {
   background-color: #000;
   background-position: 50% 0;
 }
-@media only screen and (max-width: 512px) {
+@media all and (max-width: 512px) {
   #main li li::after {
     background-image: url(/img/bg.jpg) ;
   }
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .touch #main li li::after {
     background-image: url(/img/bg.jpg) ;
   }
@@ -933,12 +933,12 @@ header nav a:hover {
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .no-touch #main li li::after {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   #main li li::after {
     background-attachment: fixed;
   }
@@ -954,12 +954,12 @@ header nav a:hover {
   background-color: #000;
   background-position: 50% 0;
 }
-@media only screen and (max-width: 512px) {
+@media all and (max-width: 512px) {
   #main li::after {
     background-image: url(/img/bg.jpg) ;
   }
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .touch #main li::after {
     background-image: url(/img/bg.jpg) ;
   }
@@ -968,12 +968,12 @@ header nav a:hover {
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .no-touch #main li::after {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   #main li::after {
     background-attachment: fixed;
   }
@@ -1026,12 +1026,12 @@ header nav a:hover {
   background-position: 50% 0;
   background-color: #001e3c;
 }
-@media only screen and (max-width: 512px) {
+@media all and (max-width: 512px) {
   #main .loader .dot {
     background-image: url(/img/bg.jpg) ;
   }
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .touch #main .loader .dot {
     background-image: url(/img/bg.jpg) ;
   }
@@ -1040,12 +1040,12 @@ header nav a:hover {
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .no-touch #main .loader .dot {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   #main .loader .dot {
     background-attachment: fixed;
   }
@@ -1237,13 +1237,13 @@ header nav a:hover {
   background-position: 50% 0;
   margin-top: -5px;
 }
-@media only screen and (max-width: 512px) {
+@media all and (max-width: 512px) {
   .ornate p:first-child::before,
   .ornate > li:first-child::before {
     background-image: url(/img/bg.jpg) ;
   }
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .touch .ornate p:first-child::before, .touch
   .ornate > li:first-child::before {
     background-image: url(/img/bg.jpg) ;
@@ -1254,13 +1254,13 @@ header nav a:hover {
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .no-touch .ornate p:first-child::before, .no-touch
   .ornate > li:first-child::before {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   .ornate p:first-child::before,
   .ornate > li:first-child::before {
     background-attachment: fixed;
@@ -1278,12 +1278,12 @@ header nav a:hover {
   background-position: 50% 0;
   margin-bottom: -5px;
 }
-@media only screen and (max-width: 512px) {
+@media all and (max-width: 512px) {
   .ornate p:last-child::after {
     background-image: url(/img/bg.jpg) ;
   }
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .touch .ornate p:last-child::after {
     background-image: url(/img/bg.jpg) ;
   }
@@ -1292,12 +1292,12 @@ header nav a:hover {
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .no-touch .ornate p:last-child::after {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   .ornate p:last-child::after {
     background-attachment: fixed;
   }
@@ -1354,12 +1354,12 @@ ul.ornate::after {
   background-color: #000;
   background-position: 50% 0;
 }
-@media only screen and (max-width: 512px) {
+@media all and (max-width: 512px) {
   .row label::before {
     background-image: url(/img/bg.jpg) ;
   }
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .touch .row label::before {
     background-image: url(/img/bg.jpg) ;
   }
@@ -1368,12 +1368,12 @@ ul.ornate::after {
   background-attachment: fixed;
   background-repeat: no-repeat;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .no-touch .row label::before {
     background-image: url(/img/bg.x2.jpg) ;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   .row label::before {
     background-attachment: fixed;
   }
@@ -1457,12 +1457,12 @@ ul.ornate::after {
 .island {
   padding: 1.5em 0;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   .island {
     padding: 2em 0;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   .island {
     padding: 2.75em 0;
   }
@@ -1498,7 +1498,7 @@ footer {
   color: rgba(255, 255, 255, 0.5);
   max-width: 18.5em;
 }
-@media only screen and (min-width: 513px) {
+@media all and (min-width: 513px) {
   footer {
     max-width: 25em;
   }
@@ -1506,7 +1506,7 @@ footer {
     padding: 0 0 1.5em;
   }
 }
-@media only screen and (min-width: 751px) {
+@media all and (min-width: 751px) {
   footer {
     line-height: 1em;
     max-width: 33em;
@@ -1551,4 +1551,75 @@ nav a {
   position: absolute !important;
   top: -999%;
   left: -999%;
+}
+
+@media print {
+  @page {
+    size: auto;
+    margin: 10mm 20mm;
+}
+
+  nav,
+  #contact {
+    display: none;
+  }
+
+  #wrapper,
+  header div.belt,
+  header hgroup,
+  #main p,
+  #main ul,
+  #main .content,
+  footer {
+    max-width: 100%;
+  }
+
+  body {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .backgroundclip h1, .backgroundclip h2 {
+    -webkit-background-clip: border-box;
+    -webkit-text-fill-color: currentcolor;
+  }
+
+  .island {
+    padding: 0;
+  }
+  .job .island {
+    padding-top: 0;
+  }
+
+  #main > section {
+    margin: 0 0 1em;
+  }
+  #main h2 {
+    padding: .25em 0;
+  }
+  #main h3, #main .btn-belt button, .btn-belt #main button {
+    color: #000;
+    padding: .1em 0;
+  }
+  #main .title {
+    margin: 0;
+  }
+  #main ul {
+    list-style: disc outside;
+    padding-left: 1em;
+  }
+  #main li {
+    padding: .1em 0;
+  }
+
+  #experience {
+    page-break-before: always;
+  }
+
+  footer p {
+    display: none;
+  }
+  footer p:first-child {
+    display: block;
+  }
 }

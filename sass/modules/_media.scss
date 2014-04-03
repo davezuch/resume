@@ -4,25 +4,25 @@ $break-3: 1024px;
 
 @mixin respond($media) {
 	@if $media == x1 {
-		@media only screen and (max-width: $break-1) { @content; }
+		@media all and (max-width: $break-1) { @content; }
 	}
 	@else if $media == x2 {
-		@media only screen and (min-width: $break-1 + 1)/* and (max-width: $break-2)*/ { @content; }
+		@media all and (min-width: $break-1 + 1)/* and (max-width: $break-2)*/ { @content; }
 	}
 	@else if $media == x3 {
-		@media only screen and (min-width: $break-2 + 1)/* and (max-width: $break-3)*/ { @content; }
+		@media all and (min-width: $break-2 + 1)/* and (max-width: $break-3)*/ { @content; }
 	}
 }
 @mixin respond2($min: '', $max: '') {
 	@if $min != '' {
 		@if $max != '' {
-			@media only screen and (min-width: $min) and (max-width: $max) { @content; }
+			@media all and (min-width: $min) and (max-width: $max) { @content; }
 		}
 		@else {
-			@media only screen and (min-width: $min) { @content; }
+			@media all and (min-width: $min) { @content; }
 		}
 	}
 	@else if $max != '' {
-		@media only screen and (max-width: $max) { @content; }
+		@media all and (max-width: $max) { @content; }
 	}
 }
