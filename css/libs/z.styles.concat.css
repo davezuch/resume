@@ -2360,13 +2360,15 @@ nav a {
 @media print {
   @page {
     size: auto;
-    margin: 20mm;
+    margin: 20mm 30mm;
 }
 
   nav,
   #contact,
-  footer {
-    display: none;
+  footer,
+  *:before,
+  *:after {
+    display: none !important;
   }
 
   #wrapper,
@@ -2388,7 +2390,7 @@ nav a {
     padding: 0 0 2.5em;
   }
 
-  .backgroundclip h1, .backgroundclip h2 {
+  .backgroundclip h1, .backgroundclip h2, .backgroundclip #main h3, .backgroundclip #main .btn-belt button, .btn-belt .backgroundclip #main button {
     -webkit-background-clip: border-box;
     -webkit-text-fill-color: currentcolor;
   }
@@ -2413,8 +2415,8 @@ nav a {
     padding: .25em 0;
   }
   #main h3, #main .btn-belt button, .btn-belt #main button {
-    color: #000;
-    padding: .1em 0;
+    opacity: .5;
+    padding: .1em 0 .25em;
   }
   #main .title {
     margin: 0;
@@ -2422,15 +2424,19 @@ nav a {
   #main p, #main ul {
     margin: 0;
   }
-  #main p:first-child {
-    padding-top: .35em;
+  #main p, #main p:first-child {
+    padding: 0;
+    text-indent: 1.5em;
   }
   #main ul {
     list-style: disc outside;
-    padding-left: 1em;
+    padding-left: 1.5em;
   }
   #main li {
     padding: .1em 0;
+  }
+  #main .desc {
+    padding-bottom: 1em;
   }
   #main .orante {
     padding: 0;
