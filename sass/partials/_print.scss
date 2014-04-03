@@ -1,10 +1,11 @@
 @media print {
     @page {
         size: auto;
-        margin: 10mm 20mm;
+        margin: 20mm;
     }
     nav,
-    #contact {
+    #contact,
+    footer {
         display: none;
     }
 
@@ -21,6 +22,10 @@
     body {
         font-size: 16px;
         margin: 0;
+    }
+
+    header hgroup {
+        padding: 0 0 2.5em; 
     }
 
     .backgroundclip {
@@ -40,7 +45,13 @@
 
     #main {
         > section {
-            margin: 0 0 1em;
+            margin: 0 0 2.5em;
+        }
+        #experience {
+            page-break-before: always;
+        }
+        #education {
+            margin-bottom: 0;
         }
         h2 {
             padding: .25em 0;
@@ -52,6 +63,14 @@
         .title {
             margin: 0;
         }
+        p, ul {
+            margin: 0;
+        }
+        p {
+            &:first-child {
+                padding-top: .35em;
+            }
+        }
         ul {
             list-style: disc outside;
             padding-left: 1em;
@@ -59,18 +78,13 @@
         li {
             padding: .1em 0;
         }
-    }
-
-    #experience {
-        page-break-before: always;
-    }
-
-    footer {
-        p {
-            display: none;
-            &:first-child {
-                display: block;
-            }
+        .orante {
+            padding: 0;
         }
+    }
+
+    #wrapper,
+    .no-touch #wrapper {
+        padding-bottom: 0;
     }
 }

@@ -1556,11 +1556,12 @@ nav a {
 @media print {
   @page {
     size: auto;
-    margin: 10mm 20mm;
+    margin: 20mm;
 }
 
   nav,
-  #contact {
+  #contact,
+  footer {
     display: none;
   }
 
@@ -1579,6 +1580,10 @@ nav a {
     margin: 0;
   }
 
+  header hgroup {
+    padding: 0 0 2.5em;
+  }
+
   .backgroundclip h1, .backgroundclip h2 {
     -webkit-background-clip: border-box;
     -webkit-text-fill-color: currentcolor;
@@ -1592,7 +1597,13 @@ nav a {
   }
 
   #main > section {
-    margin: 0 0 1em;
+    margin: 0 0 2.5em;
+  }
+  #main #experience {
+    page-break-before: always;
+  }
+  #main #education {
+    margin-bottom: 0;
   }
   #main h2 {
     padding: .25em 0;
@@ -1604,6 +1615,12 @@ nav a {
   #main .title {
     margin: 0;
   }
+  #main p, #main ul {
+    margin: 0;
+  }
+  #main p:first-child {
+    padding-top: .35em;
+  }
   #main ul {
     list-style: disc outside;
     padding-left: 1em;
@@ -1611,15 +1628,12 @@ nav a {
   #main li {
     padding: .1em 0;
   }
-
-  #experience {
-    page-break-before: always;
+  #main .orante {
+    padding: 0;
   }
 
-  footer p {
-    display: none;
-  }
-  footer p:first-child {
-    display: block;
+  #wrapper,
+  .no-touch #wrapper {
+    padding-bottom: 0;
   }
 }
