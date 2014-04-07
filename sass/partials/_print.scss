@@ -3,11 +3,10 @@
         size: auto;
         margin: 20mm 30mm;
     }
-    nav,
     #contact,
     footer,
-    *:before,
-    *:after {
+    section :before,
+    section :after {
         display: none!important;
     }
 
@@ -26,8 +25,44 @@
         margin: 0;
     }
 
-    header hgroup {
-        padding: 0 0 2.5em; 
+    header,
+    .no-touch header {
+        padding: 0;
+
+        div.belt {
+            position: relative;
+            padding: 0;
+        }
+
+        hgroup {
+            padding: 0;
+        }
+
+        nav {
+            padding: .2em 0 1em;
+
+            .nav-belt {
+                position: relative;
+                left: 0;
+                padding: 0;
+                background-color: transparent;
+                width: 100%;
+
+                &:before {
+                    display: none;
+                }
+
+                &:after {
+                    content: '562-310-' + '3233 • davidzuch' + '@gmail.com';
+                    display: block;
+                    text-transform: none;
+                }
+            }
+
+            h3, ul {
+                display: none;
+            }
+        }
     }
 
     .backgroundclip {
@@ -54,6 +89,7 @@
         }
         #education {
             margin-bottom: 0;
+            page-break-before: always;
         }
         h2 {
             padding: .25em 0;
@@ -80,10 +116,10 @@
             padding: .1em 0;
         }
         .desc {
-            padding-bottom: 1em;
-        }
-        .orante {
             padding: 0;
+        }
+        .ornate {
+            padding-bottom: 1em;
         }
     }
 

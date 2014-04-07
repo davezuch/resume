@@ -6,8 +6,9 @@ $bold: 600;
 // Base Font
 $base-font-family: garamond-premier-pro-subhead, Garamond Premier Pro Subhead, Garamond Premier Pro, Times, serif;
 $base-font-weight: $regular;
-$base-font-size: 18px;
-$base-font-size-x2: 24px;
+$base-font-size: 16px;
+$base-font-size-x2: 18px;
+$base-font-size-x3: 20px;
 $base-line-height: 1.6;
 $base-color: #000;
 
@@ -42,6 +43,9 @@ body {
 	@include respond(x2) {
 		font-size: $base-font-size-x2;
 	}
+	@include respond(x3) {
+		font-size: $base-font-size-x3;
+	}
 }
 
 a { 
@@ -61,18 +65,18 @@ h1, h2, h3 {
 h1 {
 	font-weight: $regular;
 	text-transform: uppercase;
-	font-size: 90px;
-	font-size: 9rem;
+	font-size: 80px;
+	font-size: 8rem;
 	line-height: 1;
 	@include respond(x2) {
-		font-size: 126px;
-		font-size: 12.6rem;
+		font-size: 136px;
+		font-size: 13.6rem;
 	}
 	@include respond(x3) {
 		//font-size: 285px;
 		//font-size: 28.5rem;
-		font-size: 217.5px;
-		font-size: 21.75rem;
+		font-size: 187.5px;
+		font-size: 18.75rem;
 	}
 }
 .last-letter {
@@ -93,8 +97,8 @@ h2 {
 		//font-size:75px;
 		//font-size:7.5rem;
 		//letter-spacing: .3em;
-		font-size: 74px;
-		font-size: 7.4rem;
+		font-size: 66px;
+		font-size: 6.6rem;
 		letter-spacing: .15em;
 	}
 }
@@ -111,8 +115,8 @@ h3 {
 		//font-size:54px;
 		//font-size:5.4rem;
 		//letter-spacing: .1em;
-		font-size: 51px;
-		font-size: 5.1rem;
+		font-size: 41px;
+		font-size: 4.1rem;
 		letter-spacing: .04em;
 	}
 }
@@ -132,19 +136,19 @@ header {
 		font-family: $base-font-family;
 		font-style: italic;
 		text-transform: none;
-		font-size: 20px;
-		font-size: 2rem;
+		font-size: 17.5px;
+		font-size: 1.75rem;
 		letter-spacing: 0;
 		@include respond(x2) {
-			font-size: 23px;
-			font-size: 2.3rem;
+			font-size: 25px;
+			font-size: 2.5rem;
 			letter-spacing: 2px;
 		}
 		@include respond(x3) {
 			//font-size: 58px;
 			//font-size: 5.8rem;
-			font-size: 43px;
-			font-size: 4.3rem;
+			font-size: 37px;
+			font-size: 3.7rem;
 			letter-spacing: 2px;
 		}
 	}

@@ -84,7 +84,7 @@ h1, h2 {
 header {
 	@include respond(x3) {
 		.no-touch & {
-			padding-top: 344px;
+			padding-top: 294px;
 		}
 	}
 

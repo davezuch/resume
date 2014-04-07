@@ -856,13 +856,18 @@ textarea {
 
 body {
   font-family: garamond-premier-pro-subhead, Garamond Premier Pro Subhead, Garamond Premier Pro, Times, serif;
-  font-size: 18px;
+  font-size: 16px;
   text-align: center;
   font-size-adjust: auto;
 }
 @media all and (min-width: 513px) {
   body {
-    font-size: 24px;
+    font-size: 18px;
+  }
+}
+@media all and (min-width: 751px) {
+  body {
+    font-size: 20px;
   }
 }
 
@@ -884,20 +889,20 @@ h1, h2, h3, .btn-belt button {
 h1 {
   font-weight: 400;
   text-transform: uppercase;
-  font-size: 90px;
-  font-size: 9rem;
+  font-size: 80px;
+  font-size: 8rem;
   line-height: 1;
 }
 @media all and (min-width: 513px) {
   h1 {
-    font-size: 126px;
-    font-size: 12.6rem;
+    font-size: 136px;
+    font-size: 13.6rem;
   }
 }
 @media all and (min-width: 751px) {
   h1 {
-    font-size: 217.5px;
-    font-size: 21.75rem;
+    font-size: 187.5px;
+    font-size: 18.75rem;
   }
 }
 
@@ -921,8 +926,8 @@ h2 {
 }
 @media all and (min-width: 751px) {
   h2 {
-    font-size: 74px;
-    font-size: 7.4rem;
+    font-size: 66px;
+    font-size: 6.6rem;
     letter-spacing: .15em;
   }
 }
@@ -941,8 +946,8 @@ h3, .btn-belt button {
 }
 @media all and (min-width: 751px) {
   h3, .btn-belt button {
-    font-size: 51px;
-    font-size: 5.1rem;
+    font-size: 41px;
+    font-size: 4.1rem;
     letter-spacing: .04em;
   }
 }
@@ -965,21 +970,21 @@ header h2 {
   font-family: garamond-premier-pro-subhead, Garamond Premier Pro Subhead, Garamond Premier Pro, Times, serif;
   font-style: italic;
   text-transform: none;
-  font-size: 20px;
-  font-size: 2rem;
+  font-size: 17.5px;
+  font-size: 1.75rem;
   letter-spacing: 0;
 }
 @media all and (min-width: 513px) {
   header h2 {
-    font-size: 23px;
-    font-size: 2.3rem;
+    font-size: 25px;
+    font-size: 2.5rem;
     letter-spacing: 2px;
   }
 }
 @media all and (min-width: 751px) {
   header h2 {
-    font-size: 43px;
-    font-size: 4.3rem;
+    font-size: 37px;
+    font-size: 3.7rem;
     letter-spacing: 2px;
   }
 }
@@ -1198,7 +1203,7 @@ h1, h2 {
 }
 @media all and (min-width: 513px) {
   #wrapper {
-    max-width: 25em;
+    max-width: 30em;
   }
   .no-touch #wrapper {
     padding: 0 0 2.5em;
@@ -1206,7 +1211,7 @@ h1, h2 {
 }
 @media all and (min-width: 751px) {
   #wrapper {
-    max-width: 33em;
+    max-width: 35em;
   }
   .no-touch #wrapper {
     padding: 0 0 7em;
@@ -1215,7 +1220,7 @@ h1, h2 {
 
 @media all and (min-width: 751px) {
   .no-touch header {
-    padding-top: 344px;
+    padding-top: 294px;
   }
 }
 header div.belt {
@@ -1223,12 +1228,12 @@ header div.belt {
 }
 @media all and (min-width: 513px) {
   header div.belt {
-    max-width: 25em;
+    max-width: 30em;
   }
 }
 @media all and (min-width: 751px) {
   header div.belt {
-    max-width: 33em;
+    max-width: 35em;
   }
   .no-touch header div.belt {
     position: fixed;
@@ -1246,12 +1251,12 @@ header hgroup {
 @media all and (min-width: 513px) {
   header hgroup {
     padding: 1.5em 0;
-    max-width: 25em;
+    max-width: 30em;
   }
 }
 @media all and (min-width: 751px) {
   header hgroup {
-    max-width: 33em;
+    max-width: 35em;
   }
 }
 header h2 {
@@ -1364,12 +1369,12 @@ header nav h3:before, header nav .btn-belt button:before, .btn-belt header nav b
 }
 @media all and (min-width: 513px) {
   .sticky header nav, .touch header nav {
-    max-width: 25em;
+    max-width: 30em;
   }
 }
 @media all and (min-width: 751px) {
   .sticky header nav, .touch header nav {
-    max-width: 33em;
+    max-width: 35em;
   }
 }
 header nav .nav-belt {
@@ -1619,13 +1624,13 @@ header nav a:hover {
 }
 @media all and (min-width: 513px) {
   #main p, #main ul, #main .content {
-    max-width: 20em;
+    max-width: 25em;
     margin: 0 2.5em;
   }
 }
 @media all and (min-width: 751px) {
   #main p, #main ul, #main .content {
-    max-width: 28em;
+    max-width: 30em;
     margin: 0 2.5em;
   }
 }
@@ -2307,7 +2312,7 @@ footer {
 }
 @media all and (min-width: 513px) {
   footer {
-    max-width: 25em;
+    max-width: 30em;
   }
   .no-touch footer {
     padding: 0 0 1.5em;
@@ -2316,7 +2321,7 @@ footer {
 @media all and (min-width: 751px) {
   footer {
     line-height: 1em;
-    max-width: 33em;
+    max-width: 35em;
   }
   .no-touch footer {
     position: fixed;
@@ -2366,11 +2371,10 @@ nav a {
     margin: 20mm 30mm;
 }
 
-  nav,
   #contact,
   footer,
-  *:before,
-  *:after {
+  section :before,
+  section :after {
     display: none !important;
   }
 
@@ -2389,8 +2393,47 @@ nav a {
     margin: 0;
   }
 
-  header hgroup {
-    padding: 0 0 2.5em;
+  header,
+  .no-touch header {
+    padding: 0;
+  }
+  header div.belt,
+  .no-touch header div.belt {
+    position: relative;
+    padding: 0;
+  }
+  header hgroup,
+  .no-touch header hgroup {
+    padding: 0;
+  }
+  header nav,
+  .no-touch header nav {
+    padding: .2em 0 1em;
+  }
+  header nav .nav-belt,
+  .no-touch header nav .nav-belt {
+    position: relative;
+    left: 0;
+    padding: 0;
+    background-color: transparent;
+    width: 100%;
+  }
+  header nav .nav-belt:before,
+  .no-touch header nav .nav-belt:before {
+    display: none;
+  }
+  header nav .nav-belt:after,
+  .no-touch header nav .nav-belt:after {
+    content: "562-310-3233 • davidzuch@gmail.com";
+    display: block;
+    text-transform: none;
+  }
+  header nav h3, header nav .btn-belt button, .btn-belt header nav button, header nav ul,
+  .no-touch header nav h3,
+  .no-touch header nav .btn-belt button,
+  .btn-belt .no-touch header nav button,
+  .no-touch header nav ul {
+    display: none;
   }
 
   .backgroundclip h1, .backgroundclip h2, .backgroundclip #main h3, .backgroundclip #main .btn-belt button, .btn-belt .backgroundclip #main button {
@@ -2413,6 +2456,7 @@ nav a {
   }
   #main #education {
     margin-bottom: 0;
+    page-break-before: always;
   }
   #main h2 {
     padding: .25em 0;
@@ -2439,10 +2483,10 @@ nav a {
     padding: .1em 0;
   }
   #main .desc {
-    padding-bottom: 1em;
-  }
-  #main .orante {
     padding: 0;
+  }
+  #main .ornate {
+    padding-bottom: 1em;
   }
 
   #wrapper,
